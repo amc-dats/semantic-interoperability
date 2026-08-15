@@ -46,9 +46,14 @@ completing the flow once.
   actually sending. See `server/index.js`. Swapping in the real Function
   app later is a matter of setting `VITE_API_BASE` at build time (see
   `src/lib/api.ts`) — no frontend logic changes.
-- **GitHub Pages deployment is not set up.** No repo has been created under
-  `amc-dats`, no deploy workflow exists yet. Per the brief: build and test
-  locally first, only push once approved.
+- **GitHub Pages deployment is not set up.** No deploy workflow exists yet.
+  Per the brief: build and test locally first, only push once approved.
+  **Update:** this app will go into the existing `amc-dats/data-lineage`
+  repo rather than a new one — the user's explicit instruction overrides the
+  original brief's "new repository" wording. Structure/subpath for
+  co-locating two GitHub Pages apps in one repo (this app's own subfolder,
+  each with its own build + Pages subpath, most likely) still needs
+  confirming before that work starts.
 
 ## Second pass — what changed
 
@@ -171,9 +176,11 @@ generated files.
 2. Stand up the real Azure Function endpoints against the provisioned
    `Interoperability-results` app and `semanticinteroperability` storage
    account, matching the contract `server/index.js` already models.
-3. Create the `amc-dats` repo, copy the `data-lineage` repo's
-   `.github/workflows/deploy-pages.yml` pattern, set `vite.config.ts`'s
-   `base` to match the Pages subpath, and set `VITE_API_BASE` to the
-   deployed Function App URL at build time.
+3. Add this app into the existing `amc-dats/data-lineage` repo (not a new
+   repo — confirmed by the user), adapting its
+   `.github/workflows/deploy-pages.yml` pattern so both apps build and
+   deploy to GitHub Pages from one repo. Set `vite.config.ts`'s `base` to
+   match this app's Pages subpath, and set `VITE_API_BASE` to the deployed
+   Function App URL at build time.
 4. Add the Function App's CORS entry for the GitHub Pages origin once it
    exists.
