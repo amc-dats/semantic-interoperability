@@ -46,14 +46,13 @@ completing the flow once.
   actually sending. See `server/index.js`. Swapping in the real Function
   app later is a matter of setting `VITE_API_BASE` at build time (see
   `src/lib/api.ts`) — no frontend logic changes.
-- **GitHub Pages deployment is not set up.** No deploy workflow exists yet.
-  Per the brief: build and test locally first, only push once approved.
-  **Update:** this app will go into the existing `amc-dats/data-lineage`
-  repo rather than a new one — the user's explicit instruction overrides the
-  original brief's "new repository" wording. Structure/subpath for
-  co-locating two GitHub Pages apps in one repo (this app's own subfolder,
-  each with its own build + Pages subpath, most likely) still needs
-  confirming before that work starts.
+- **GitHub Pages deployment is not set up yet, but the repo now exists.**
+  `https://github.com/amc-dats/semantic-interoperability` — a new, separate
+  repo (not `data-lineage`), created empty. No code has been pushed to it
+  and no deploy workflow exists yet — per the brief, build and test locally
+  first, only push once approved. The local repo here has `origin` pointing
+  at it already (see "Git / repo state" below), so pushing is a `git push
+  -u origin master` away once you've reviewed and given the go-ahead.
 
 ## Second pass — what changed
 
@@ -170,17 +169,28 @@ the brief. `dimensionMaturityDescriptors.ts` was transcribed from
 re-extracting; ask for this to be regenerated rather than hand-editing the
 generated files.
 
+## Git / repo state
+
+- Local git repo (`webapp/.git`), commit author `Ananda Mello Costa
+  <a.mellocosta.729@cranfield.ac.uk>` — matches the GitHub account
+  (`amc-dats`, authenticated via `gh`) used for the Azure resources.
+- `origin` remote is set to `https://github.com/amc-dats/semantic-interoperability`
+  — a new, empty repo (public, for GitHub Pages Free-plan hosting, same as
+  `data-lineage`) created for this app specifically. **Nothing has been
+  pushed to it yet** — that's the one step still waiting on your review.
+
 ## Next steps toward the real thing
 
-1. Get the video exported and hosted, set `VITE_VIDEO_URL`.
-2. Stand up the real Azure Function endpoints against the provisioned
+1. Review the local prototype; once approved, `git push -u origin master`
+   to publish this code to `amc-dats/semantic-interoperability`.
+2. Get the video exported and hosted, set `VITE_VIDEO_URL`.
+3. Stand up the real Azure Function endpoints against the provisioned
    `Interoperability-results` app and `semanticinteroperability` storage
    account, matching the contract `server/index.js` already models.
-3. Add this app into the existing `amc-dats/data-lineage` repo (not a new
-   repo — confirmed by the user), adapting its
-   `.github/workflows/deploy-pages.yml` pattern so both apps build and
-   deploy to GitHub Pages from one repo. Set `vite.config.ts`'s `base` to
-   match this app's Pages subpath, and set `VITE_API_BASE` to the deployed
-   Function App URL at build time.
-4. Add the Function App's CORS entry for the GitHub Pages origin once it
+4. Add a `.github/workflows/deploy-pages.yml`, following the pattern in the
+   `data-lineage` repo, and set `vite.config.ts`'s `base` to
+   `/semantic-interoperability/` (or a custom domain, if one gets set up)
+   to match the Pages subpath. Set `VITE_API_BASE` to the deployed Function
+   App URL at build time.
+5. Add the Function App's CORS entry for the GitHub Pages origin once it
    exists.
