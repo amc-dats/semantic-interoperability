@@ -1,0 +1,1659 @@
+{
+  "dimensions": [
+    {
+      "id": "technical",
+      "name": "Technical",
+      "questionCount": 9,
+      "questions": [
+        {
+          "id": "technical_q1",
+          "number": 1,
+          "text": {
+            "technical": "Has the current landscape of inter-system connections and integrations been mapped or audited?",
+            "plainEnglish": "Does the organisation have a clear, up-to-date picture of which systems are connected to each other and how information passes between them?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No view of how systems connect; integrations are ad hoc and undocumented.",
+                "plainEnglish": "No one has mapped how systems connect; connections have grown up informally and aren't documented."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "Recognised as a gap, but no audit of existing connections has begun.",
+                "plainEnglish": "It's recognised that this picture is missing, but no review has started yet."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "A map or audit of existing inter-system connections and integrations has been completed.",
+                "plainEnglish": "A full map or review of how systems currently connect has been completed."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "The integration map is actively maintained and used to inform connectivity decisions and governance.",
+                "plainEnglish": "This map is kept up to date and used to guide decisions about new connections."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Integration mapping is continuous and automated (e.g. auto-discovery of new connections).",
+                "plainEnglish": "The map updates itself automatically, spotting new connections as they're made."
+              }
+            }
+          ]
+        },
+        {
+          "id": "technical_q2",
+          "number": 2,
+          "text": {
+            "technical": "Are standardised communication protocols (e.g. OPC UA, MQTT, REST) in place, governed, and enforced across critical and operational systems?",
+            "plainEnglish": "Do the organisation's key systems talk to each other using a small number of standard, well-managed methods, rather than one-off custom connections built for each link?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No standardised protocols in use; all integrations are point-to-point and ad hoc.",
+                "plainEnglish": "There are no standard methods; every connection between systems is built separately and managed differently."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "Standardised protocols already in local use have been identified and inventoried.",
+                "plainEnglish": "The standard methods already in informal use have been identified and listed."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Protocol usage is defined and enforced for critical/core systems, with governance documented.",
+                "plainEnglish": "A defined standard approach is required and enforced for the organisation's most important systems."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Protocol standardisation and enforcement extends to all operational systems.",
+                "plainEnglish": "This standard approach is required and enforced across all operational systems, not just the critical ones."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Protocol governance is automated, with continuous monitoring and optimisation of usage.",
+                "plainEnglish": "How these standards are used is tracked and improved automatically on an ongoing basis."
+              }
+            }
+          ]
+        },
+        {
+          "id": "technical_q3",
+          "number": 3,
+          "text": {
+            "technical": "Are persistent identifiers assigned to data assets and managed through their lifecycle?",
+            "plainEnglish": "Does every important piece of data or dataset have a unique, permanent reference (like a serial number) that stays with it and is actively managed throughout its life?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No identifier management process exists; data assets are not consistently identified.",
+                "plainEnglish": "There's no consistent way of uniquely identifying data assets."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "Identifier management processes are established and persistent identifiers assigned to critical data assets.",
+                "plainEnglish": "A process for assigning permanent references has been set up and applied to the most critical data."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Identifier coverage extends to all key datasets, automated for new assets and integrated with metadata systems.",
+                "plainEnglish": "This covers all key datasets, and new data automatically gets a reference and is linked to its supporting information."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Identifier coverage extends to all data assets, with lifecycle management fully automated, establishing FAIR findability.",
+                "plainEnglish": "Every data asset has a permanent reference that's fully managed automatically, making data easy to find and reuse across the organisation."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Identifier management is continuously validated and extended as new sources and asset types are onboarded.",
+                "plainEnglish": "This is continuously checked and extended as new data and new types of assets are introduced."
+              }
+            }
+          ]
+        },
+        {
+          "id": "technical_q4",
+          "number": 4,
+          "text": {
+            "technical": "Is metadata governance in place, with metadata captured and integrated with data catalogues?",
+            "plainEnglish": "Is there a consistent, well-managed approach to recording the descriptive information about data (what it is, who owns it, where it came from), kept in a central place that's easy to search?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No metadata management practice; metadata is absent or inconsistent.",
+                "plainEnglish": "There's no consistent practice for recording this descriptive information; it's missing or inconsistent."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "Current metadata management practice has been assessed, with gaps and inconsistencies identified.",
+                "plainEnglish": "Current practice has been reviewed, with gaps and inconsistencies identified."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Metadata standards and governance processes are defined; automated capture is piloted for new assets.",
+                "plainEnglish": "Clear standards and rules for recording this information are defined, and automatic capture is being trialled for new data."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Automated metadata capture is implemented for all assets, integrated with catalogues, supporting FAIR reuse.",
+                "plainEnglish": "Automatic capture is in place for all data, feeding into a central, searchable catalogue."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Metadata governance is continuously monitored and refined as catalogue and governance tooling evolves.",
+                "plainEnglish": "This is continuously reviewed and improved as the tools and processes mature."
+              }
+            }
+          ]
+        },
+        {
+          "id": "technical_q5",
+          "number": 5,
+          "text": {
+            "technical": "Is data lineage and provenance documented and captured (manually or automatically) across data flows?",
+            "plainEnglish": "Is there a record of where data originally came from and how it has been changed or combined along the way, so its history can be traced?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "Not tracked; data origin and transformation history are unknown.",
+                "plainEnglish": "This isn't tracked; where data came from and how it's changed over time is unknown."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "Current state assessed, gaps identified, high-level documentation produced for critical data flows.",
+                "plainEnglish": "Current gaps have been identified, and basic documentation exists for the most critical information flows."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Standards and processes are defined; automated capture is piloted for a subset of critical flows.",
+                "plainEnglish": "Clear standards are defined, and automatic tracking is being trialled for a subset of critical flows."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Automated capture is implemented for all critical and high-priority flows.",
+                "plainEnglish": "Automatic tracking is in place for all critical and high-priority information flows."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Automated capture extends to all data flows, with ML-driven accuracy improvement and anomaly detection.",
+                "plainEnglish": "Automatic tracking covers everything, with intelligent tools flagging anything unusual and improving accuracy over time."
+              }
+            }
+          ]
+        },
+        {
+          "id": "technical_q6",
+          "number": 6,
+          "text": {
+            "technical": "Are data quality rules and thresholds defined, measured and enforced, with validation applied at the point of capture?",
+            "plainEnglish": "Are clear standards set for how accurate, complete and up to date data needs to be, and are these checked and enforced when data is first entered?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "Not assessed; quality issues are identified only when they cause downstream problems.",
+                "plainEnglish": "This isn't assessed; problems are only noticed once they cause issues further down the line."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "Assessed against defined dimensions (accuracy, completeness, format, timeliness); baseline recorded.",
+                "plainEnglish": "Clear standards have been set (accuracy, completeness, format, timeliness) and a starting baseline recorded."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Extended to all systems; datasets corrected to agreed thresholds with validation at point of capture.",
+                "plainEnglish": "These standards apply across the whole organisation, with data corrected to meet them and checks happening as data is entered."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Ontology-based validation (e.g. SHACL) operates as a persistent, continuous quality control.",
+                "plainEnglish": "Automated, rule-based checking runs continuously in the background to catch quality issues."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Quality issues are automatically corrected at source; only exceptions requiring judgement are escalated.",
+                "plainEnglish": "Most quality issues are fixed automatically at the source, with only genuinely difficult cases passed to a person."
+              }
+            }
+          ]
+        },
+        {
+          "id": "technical_q7",
+          "number": 7,
+          "text": {
+            "technical": "Is there a query interface enabling users to access and query data across distributed systems (e.g. SPARQL endpoint, GraphQL server, federated query tool)?",
+            "plainEnglish": "Can people easily search for and pull together information that's spread across different systems, without needing IT support to do it manually each time?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No structured way to query or access data across systems; access relies on manual workarounds.",
+                "plainEnglish": "There's no proper way to do this; getting information from different systems relies on manual workarounds."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "Current access and query practices assessed; manual processes and pain points documented.",
+                "plainEnglish": "Current practices have been reviewed, with the manual effort and pain points documented."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Interface operational for pilot users on priority domains, with authentication and access enforcement.",
+                "plainEnglish": "A tool for doing this is up and running for a pilot group, on the organisation's priority areas, with appropriate access controls."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Self-service query access operational for all users across all domains, with role-based access control.",
+                "plainEnglish": "This tool is available to everyone across the organisation, with people only able to see the information they're authorised to see."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Interface extends to federated external partner data, with performance monitoring and optimisation.",
+                "plainEnglish": "This extends to information held by external partners too, and its performance is actively monitored and improved."
+              }
+            }
+          ]
+        },
+        {
+          "id": "technical_q8",
+          "number": 8,
+          "text": {
+            "technical": "Are standardised connectors deployed to enable federated, decentralised data access across systems, internally and externally?",
+            "plainEnglish": "Are there standard, reusable ways for systems to share data with each other and with outside partners, rather than one-off links being built each time?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No standardised connectors exist; systems cannot expose data for federated access.",
+                "plainEnglish": "There are no standard connectors; systems can't easily share their data with others."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "Recognised, but not yet begun (federation infrastructure work is blocked until Q1-Q7 reach Level 3).",
+                "plainEnglish": "This has been recognised as needed, but work hasn't started yet (it depends on other foundations being in place first)."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Standardised connectors deployed for priority systems, exposing data via standardised protocols.",
+                "plainEnglish": "Standard connectors are in place for the organisation's priority systems."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Connector coverage extends to all internal systems, enabling vertical (internal) federation.",
+                "plainEnglish": "This covers all internal systems, so data can flow freely across the organisation."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Federation extends to external partner systems (horizontal), with cross-organisational connectors and failover.",
+                "plainEnglish": "This extends to outside partner organisations too, with safeguards in place if a connection fails."
+              }
+            }
+          ]
+        },
+        {
+          "id": "technical_q9",
+          "number": 9,
+          "text": {
+            "technical": "Is legacy equipment without native connectivity brought into the federated architecture using the Asset Administration Shell (AAS) or an equivalent standardised wrapper?",
+            "plainEnglish": "Is older equipment that can't naturally connect to modern systems brought into the shared data environment using a standard 'digital wrapper', so it doesn't get left behind?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "Legacy equipment without native connectivity is entirely excluded from federated access.",
+                "plainEnglish": "Older equipment without built-in connectivity is left out of the shared data environment entirely."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "Recognised as a gap, but no scoping has taken place (blocked until federation infrastructure reaches Level 3).",
+                "plainEnglish": "This has been recognised as a gap, but no assessment has started yet (it depends on other foundations being in place first)."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "In-scope legacy equipment has been assessed, with requirements documented.",
+                "plainEnglish": "The older equipment involved has been assessed and what's needed for each has been documented."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "AAS (or an equivalent standardised wrapper) is implemented, making equipment accessible via connectors.",
+                "plainEnglish": "A standard digital wrapper has been put in place, making this equipment accessible like any other connected system."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Not yet defined in the roadmap beyond Level 4.",
+                "plainEnglish": "Not yet defined beyond this point."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "semantic",
+      "name": "Semantic",
+      "questionCount": 10,
+      "questions": [
+        {
+          "id": "semantic_q1",
+          "number": 1,
+          "text": {
+            "technical": "Has an inventory of existing semantic assets (data dictionaries, glossaries, taxonomies, local ontologies) been completed, and have priority domains, use cases and competency questions been scoped?",
+            "plainEnglish": "Has the organisation identified and listed the different terms, definitions and lists it currently uses (in glossaries, spreadsheets, existing local systems), agreed which areas of the business to focus on first, and worked out what questions a shared way of describing data needs to be able to answer?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No inventory of existing terminology or data structures has been carried out, and no reference standards or ontologies have been considered. This is the common starting point: most organisations do not use ontologies.",
+                "plainEnglish": "No stock-take of existing terms or data structures has been done, and no external standards have been considered. Most organisations start here."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "Existing terminology and data structures have been inventoried, priority domains and the questions a shared approach needs to answer have been identified, and relevant published standards (e.g. ISA-95, AAS, ECLASS) have been reviewed for fit.",
+                "plainEnglish": "Existing terms and data structures have been listed, priority areas and key questions identified, and relevant published standards reviewed for fit."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Reference standards have been formally adopted for priority domains, with gaps documented, and a top-level, domain-neutral ontology (e.g. BFO) selected to provide the overarching structure.",
+                "plainEnglish": "Suitable published standards have been formally adopted for the priority areas, with any gaps noted, and a broad top-level structure chosen to organise everything under."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Scoping and standards selection has extended beyond the initial priority domains to all remaining domains.",
+                "plainEnglish": "This work has been extended to cover all remaining areas of the business, not just the initial priorities."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Domain and standards scoping is maintained as a continuous practice, reviewed and refined as new domains, systems or business needs emerge.",
+                "plainEnglish": "This is treated as an ongoing activity, reviewed and updated as new areas, systems or business needs come up."
+              }
+            }
+          ]
+        },
+        {
+          "id": "semantic_q2",
+          "number": 2,
+          "text": {
+            "technical": "Has the organisation's terminology and standards choices been aligned with those of external federation partners, and is this alignment actively maintained?",
+            "plainEnglish": "Has the organisation compared its own terms and standards with those used by its external partners, and is this comparison kept up to date as things change?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No consideration has been given to how the organisation's terminology or standards choices compare with those of external partners.",
+                "plainEnglish": "No comparison has been made with how partners describe or organise their data."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "An informal, unstructured comparison with partners' terminology or standards has begun.",
+                "plainEnglish": "An informal, unstructured comparison with partners has begun."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "The need for a formal comparison against partners' ontologies is recognised, though not yet carried out.",
+                "plainEnglish": "The need for a proper, formal comparison has been recognised, but it hasn't been done yet."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "The landscape of ontologies used by external federation partners is documented, divergence identified, and reconciling mappings determined; standards are monitored for revisions relevant to adopted selections.",
+                "plainEnglish": "A clear picture exists of what standards partners use, where they differ from the organisation's own, and how to reconcile the differences; relevant standards are monitored for updates."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "The organisation actively participates in relevant standards bodies to influence standards development, maintaining alignment with partners as their own selections evolve.",
+                "plainEnglish": "The organisation actively takes part in the relevant standards-setting groups to help shape future standards, and keeps pace as partners' own choices evolve."
+              }
+            }
+          ]
+        },
+        {
+          "id": "semantic_q3",
+          "number": 3,
+          "text": {
+            "technical": "Has ontology development capability been established, and has a domain and application ontology been developed and validated against competency questions?",
+            "plainEnglish": "Does the organisation have the tools, skills and agreed way of working needed to build and maintain a shared model of its data, and has that model been built and checked against real business questions?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No capability exists to build or maintain an ontology; this has not been attempted, reflecting how uncommon and specialist this practice still is.",
+                "plainEnglish": "No capability exists to build this kind of shared model; it hasn't been attempted. This reflects how specialist and uncommon this work still is."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "Development capability is established: modelling tools and conventions (e.g. OWL, Protégé) are defined, with the necessary skills confirmed as available.",
+                "plainEnglish": "The tools and conventions needed have been agreed, and the necessary skills confirmed as available."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "A domain ontology has been developed for priority domains, checked for logical consistency, and published as a version.",
+                "plainEnglish": "A shared model has been built for the priority areas, checked for internal consistency, and published as a first version."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Application ontologies have been developed for priority use cases, built on the domain ontology, and both are validated against the competency questions defined at Q1.",
+                "plainEnglish": "More detailed models have been built for specific priority uses, based on the shared model, and both are tested against the business questions identified at Question 1."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Domain and application ontology development has extended to all remaining domains, with consistency checking and competency-question validation applied throughout.",
+                "plainEnglish": "This has been extended to cover all remaining areas of the business, with the same consistency checks and testing applied throughout."
+              }
+            }
+          ]
+        },
+        {
+          "id": "semantic_q4",
+          "number": 4,
+          "text": {
+            "technical": "Is there a formal ontology governance process (change control, versioning, release cadence, deprecation, impact assessment) in place?",
+            "plainEnglish": "Is there a formal, agreed process for approving, tracking versions of, and retiring parts of the shared data model, so changes don't happen in an uncontrolled way?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No process exists for approving, versioning or maintaining the ontology.",
+                "plainEnglish": "No process exists for approving, tracking or maintaining changes to the shared model."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "The need for formal ontology governance is recognised, though not yet established.",
+                "plainEnglish": "The need for a formal process is recognised, but it hasn't been set up yet."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Change control is established: versioning, an approval route, a published release record, and a defined route for reporting gaps or errors.",
+                "plainEnglish": "A basic process is in place: version tracking, an approval route, a published change record, and a way to report problems."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "The full ontology lifecycle is operated: release cadence defined, change impact assessed before approval, retired terms deprecated, and ontologies actively maintained as requirements evolve.",
+                "plainEnglish": "The full process is up and running: a regular release schedule, impact assessment before changes are approved, retired terms properly withdrawn, and the model kept actively maintained."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Ontology releases are automatically validated through regression testing before publication, confirming changes do not invalidate existing competency questions, mappings or partner agreements.",
+                "plainEnglish": "Changes are automatically tested before release, to confirm they don't break anything that depends on the model."
+              }
+            }
+          ]
+        },
+        {
+          "id": "semantic_q5",
+          "number": 5,
+          "text": {
+            "technical": "Has current data structure been documented for priority systems, and have source-to-ontology mappings (OBDA) been developed and extended across all internal and partner systems?",
+            "plainEnglish": "Has the way data is structured in each system been documented, and has a mapping been built connecting each system's own field names and codes to the organisation's shared model, so people can query using shared, understandable terms instead of each system's own technical labels?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No documented record exists of how data is structured across systems, and no mapping to shared meaning exists. This is the typical starting point: OBDA is not yet common industry methodology, which is precisely the gap this research addresses.",
+                "plainEnglish": "There's no documented record of how data is structured across systems, and no mapping exists connecting it to shared, understandable terms. This is the typical starting point."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "How data is structured in each priority system (field names, types, formats, code lists) has been documented.",
+                "plainEnglish": "How data is structured in each priority system (field names, formats, code lists) has been documented."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Source-to-ontology mappings have been developed for priority systems: this is what OBDA means in practice, querying using shared terms rather than each system's own field names.",
+                "plainEnglish": "Mappings have been built connecting priority systems' own field names to the shared model, so they can be queried using shared terms."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Mappings extend to all internal systems, achieving full OBDA operation internally.",
+                "plainEnglish": "This mapping now covers all internal systems."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Mappings reconcile external partner schemas with the organisation's own, making partner data queryable the same way.",
+                "plainEnglish": "This mapping extends to external partners' systems too, so their data can be queried in the same way."
+              }
+            }
+          ]
+        },
+        {
+          "id": "semantic_q6",
+          "number": 6,
+          "text": {
+            "technical": "Have terminology conflicts (\"data dialects\") and duplicate entities across systems been identified and resolved, with mapping maintenance and automated mapping generation for new sources?",
+            "plainEnglish": "Where different systems use different words for the same thing, or the same word to mean different things, have these conflicts been identified and resolved, and are duplicate records for the same real-world item matched up and kept in sync automatically?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "Terminology conflicts (\"data dialects\": the same concept named differently, or the same term meaning different things in different places) are not documented, and duplicate records for the same real-world thing across systems are not identified.",
+                "plainEnglish": "These naming conflicts aren't documented, and duplicate records for the same real-world thing aren't identified across systems."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "Conflicts are documented as a register of data dialects in use.",
+                "plainEnglish": "A log of these naming conflicts has been created."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Duplicate entities are resolved via defined matching rules; query translation is validated against the competency questions defined at Q1.",
+                "plainEnglish": "Duplicate records are matched using agreed rules, and the results are tested against the business questions identified at Question 1."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Mapping maintenance is established (source changes are detected and mappings corrected); automated mapping generation is piloted against manually developed mappings.",
+                "plainEnglish": "A process is in place to spot when a source system changes and automatically flag mappings that need correcting; automatically generating new mappings is being trialled."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Mapping generation for new and changed sources is automated, using schema matching or machine-learning-assisted alignment, with human validation before deployment.",
+                "plainEnglish": "Generating new mappings is automated, using pattern-matching or AI-assisted tools, with a person checking the results before anything goes live."
+              }
+            }
+          ]
+        },
+        {
+          "id": "semantic_q7",
+          "number": 7,
+          "text": {
+            "technical": "Has a semantic layer architecture been selected (consistent with decentralised access) and deployed for priority domains?",
+            "plainEnglish": "Has a decision been made on how information from different systems will be brought together for querying, and has this been built and switched on for the priority areas?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No decision has been made on how a shared, queryable layer would be architected.",
+                "plainEnglish": "No decision has been made on how this shared, queryable capability would be built."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "Architectural options are being considered, but no decision has been made.",
+                "plainEnglish": "Options are being considered, but no decision has been made."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "An architecture is selected consistent with decentralised access: reading live from source systems, each system maintaining its own knowledge graph queried through a single access point, or a combination; central aggregation into one repository is deliberately excluded.",
+                "plainEnglish": "An approach has been chosen that keeps data spread across systems rather than copying everything into one central store; each system either answers questions live, or keeps its own searchable copy, connected through a single access point."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "The semantic layer is deployed and operational for priority domains, loading the ontology and mappings so data in separate systems can be queried through shared terms.",
+                "plainEnglish": "This has been built and switched on for the priority areas, so data held in separate systems can be queried using shared, understandable terms."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "The layer is stable and trusted for priority-domain use, actively relied upon by users rather than worked around.",
+                "plainEnglish": "It's stable and trusted enough that people in the priority areas actually rely on it day to day, rather than working around it."
+              }
+            }
+          ]
+        },
+        {
+          "id": "semantic_q8",
+          "number": 8,
+          "text": {
+            "technical": "Does the semantic layer extend across all internal systems and to external partner sources, supporting federation both internally and externally?",
+            "plainEnglish": "Does this shared querying capability now cover all of the organisation's internal systems, and does it reach external partners' systems too?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No semantic layer exists beyond isolated pilots, if any.",
+                "plainEnglish": "No shared querying capability exists beyond small, isolated trials, if any."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "Extension planning beyond priority domains has begun but not been implemented.",
+                "plainEnglish": "Planning to extend beyond the priority areas has begun, but nothing has been built yet."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "The layer covers a defined subset of internal systems beyond the original priority domains.",
+                "plainEnglish": "The capability now covers a defined group of internal systems beyond the original priority areas."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "The semantic layer is operational across all internal systems, supporting federation internally (vertically).",
+                "plainEnglish": "The capability covers all internal systems, so information can be pulled together across the whole organisation."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "The layer extends to external partner sources, enabling federated query across organisational boundaries (horizontally).",
+                "plainEnglish": "The capability extends to external partners' systems too, so information can be queried across organisational boundaries."
+              }
+            }
+          ]
+        },
+        {
+          "id": "semantic_q9",
+          "number": 9,
+          "text": {
+            "technical": "Is there a source/query catalogue enabling queries in ontology terms to be automatically routed to the systems able to answer them?",
+            "plainEnglish": "Is there a directory that keeps track of which system holds which kind of information, so that a question asked in shared, everyday terms is automatically sent to the right system(s) to be answered?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No catalogue exists recording which systems hold which concepts.",
+                "plainEnglish": "No such directory exists."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "The need for a catalogue is recognised, but nothing has been built.",
+                "plainEnglish": "The need for one is recognised, but nothing has been built."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "A catalogue is operational, routing queries automatically to the right sources for priority domains.",
+                "plainEnglish": "A working directory exists, automatically directing questions to the right systems for the priority areas."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "The catalogue extends to all internal systems.",
+                "plainEnglish": "This directory now covers all internal systems."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "The catalogue extends to external partner sources.",
+                "plainEnglish": "This directory extends to external partners' systems too."
+              }
+            }
+          ]
+        },
+        {
+          "id": "semantic_q10",
+          "number": 10,
+          "text": {
+            "technical": "Has federated query been piloted and validated against competency questions, with performance monitored and reasoning or link prediction applied at higher maturity?",
+            "plainEnglish": "Has the organisation successfully tested asking a single question that pulls together answers from more than one system at once, and at a more advanced stage, can the system work out additional facts that aren't directly stored anywhere, or spot likely (but undocumented) connections for someone to check?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "Querying across more than one system at once has not been attempted.",
+                "plainEnglish": "Asking a single question that pulls information from more than one system at once hasn't been attempted."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "A case for cross-system querying has been identified but not tested.",
+                "plainEnglish": "A case for doing this has been identified but not yet tried."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Federated query has been piloted across at least two systems and validated against the competency questions defined at Q1.",
+                "plainEnglish": "This has been successfully tested across at least two systems and checked against the business questions identified at Question 1."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Performance is actively monitored and query routing optimised; logic and reasoning are enabled at query time, returning results implied by the ontology but not explicitly stated anywhere.",
+                "plainEnglish": "Performance is actively monitored and the routing of questions to systems is fine-tuned; the system can also work out and return facts that follow logically from what's known, even though they aren't directly stored anywhere."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Link prediction identifies undocumented relationships between entities and surfaces them for validation (applicable only where the architecture selected at Q7 uses knowledge graphs rather than live reads from source systems).",
+                "plainEnglish": "The system can spot likely, undocumented connections between pieces of information and flag them for someone to check. This is only possible where the approach chosen at Question 7 involves each system keeping its own searchable copy, rather than answering questions live from source systems each time."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "organisational",
+      "name": "Organisational",
+      "questionCount": 6,
+      "questions": [
+        {
+          "id": "organisational_q1",
+          "number": 1,
+          "text": {
+            "technical": "Is there a named senior owner accountable for interoperability across all dimensions, with authority for decision-making and resolving cross-dimension conflicts?",
+            "plainEnglish": "Is there a named senior leader who is responsible for interoperability across the whole organisation, with the authority to make decisions and resolve disagreements between different teams or areas?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No one is accountable for interoperability; decisions and conflicts across dimensions have no clear owner.",
+                "plainEnglish": "No one is responsible for interoperability; when conflicts arise between teams, there's no clear owner to resolve them."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "A senior owner accountable for interoperability across all dimensions is named, with authority for decision-making and resolving cross-dimension conflicts.",
+                "plainEnglish": "A senior leader has been named as responsible for interoperability across the organisation, with the authority to make decisions and resolve conflicts."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "The accountability remit is formally documented (e.g. a charter or terms of reference) and communicated across the organisation.",
+                "plainEnglish": "This responsibility is formally written down (e.g. in a charter or terms of reference) and communicated across the organisation."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Accountability is embedded into a governance cadence — the owner participates in scheduled decision points, reviews and conflict resolution rather than holding the title without exercising it.",
+                "plainEnglish": "This responsibility is actively exercised through regular decision points, reviews and conflict resolution, not just held as a title."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Interoperability accountability is embedded into role descriptions and recruitment criteria, so it persists independently of the individual currently holding the role.",
+                "plainEnglish": "This responsibility is built into job descriptions and hiring criteria, so it continues regardless of who currently holds the role."
+              }
+            }
+          ]
+        },
+        {
+          "id": "organisational_q2",
+          "number": 2,
+          "text": {
+            "technical": "Is data ownership recorded per data domain, with escalation routes defined for disputes that stewards cannot resolve?",
+            "plainEnglish": "Is someone clearly responsible for each area of data (e.g. customer records, product data, maintenance data), and is there a clear route for resolving disagreements that day-to-day data handlers can't sort out themselves?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No data owner is recorded for any data domain; accountability for data quality is unclear.",
+                "plainEnglish": "No one is recorded as responsible for any area of data; it's unclear who's accountable when data quality issues arise."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "An accountable owner is identified and recorded for each priority data domain.",
+                "plainEnglish": "A responsible owner is identified and recorded for each priority area of data."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Escalation routes are defined for decisions that cannot be resolved by data stewards, including cross-domain terminology conflicts and disputes over authoritative source.",
+                "plainEnglish": "Clear routes exist for resolving disagreements that can't be sorted out day to day, including disputes over terminology or which system holds the correct version."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Domain ownership recording extends to all remaining data domains.",
+                "plainEnglish": "Ownership has been recorded for all remaining areas of data, not just the priority ones."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Ownership records are actively reviewed and maintained as domains are added, merged, split or redefined.",
+                "plainEnglish": "Ownership records are actively reviewed and kept up to date as areas of data are added, merged, split or redefined."
+              }
+            }
+          ]
+        },
+        {
+          "id": "organisational_q3",
+          "number": 3,
+          "text": {
+            "technical": "Are data stewards designated within each domain, at a granularity appropriate to organisational complexity (system or dataset level), with a defined remit and delegated approval authority?",
+            "plainEnglish": "Are specific people given day-to-day responsibility for looking after data quality, sorting out exceptions and making terminology decisions, at a level of detail that suits how complex the organisation is, with clear authority to act?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No data stewards exist; ownership of quality rules, exceptions and terminology decisions below domain level is undefined.",
+                "plainEnglish": "No one holds this day-to-day responsibility; who's responsible for quality issues and terminology decisions below the overall area level is undefined."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "The appropriate steward granularity for the organisation (system, dataset or sub-domain) is determined based on complexity, rather than assumed.",
+                "plainEnglish": "The right level of detail for these day-to-day roles (whole system, individual dataset, or something in between) has been worked out, based on how complex the organisation is, rather than just assumed."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Stewards are designated at the determined granularity within each priority domain, with a defined remit (quality rule definition, exception handling, ontology change assessment, terminology decisions) and confirmed authority and capacity.",
+                "plainEnglish": "People are appointed to these roles at the right level of detail within each priority area, with clear responsibilities and confirmed authority and capacity to act."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Steward designation extends to all systems/datasets across all domains, with a defined delegation of which changes stewards may approve within their own remit versus what must be referred to the forum.",
+                "plainEnglish": "This has been extended across all systems and datasets in all areas, with clear rules for what these people can decide themselves versus what needs to go to a wider group."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Stewardship accountabilities are embedded into role descriptions and recruitment criteria, persisting independently of current post-holders.",
+                "plainEnglish": "These responsibilities are built into job descriptions and hiring criteria, so they continue regardless of who currently holds the role."
+              }
+            }
+          ]
+        },
+        {
+          "id": "organisational_q4",
+          "number": 4,
+          "text": {
+            "technical": "Is accountability assigned for internal and external federation decisions, with named points of contact for each partner?",
+            "plainEnglish": "Is it clear who decides what data is shared with other parts of the organisation, and with outside partners, and is there a named contact person for each partner?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No accountability exists for deciding what data is federated, internally or externally, or with whom.",
+                "plainEnglish": "No one is responsible for deciding what data is shared, either internally or with outside partners."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "The need to assign federation accountability is recognised, though not yet formalised.",
+                "plainEnglish": "The need to assign this responsibility is recognised, but it hasn't been formally done yet."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Accountability for internal federation decisions is assigned (which systems federate, what's exposed through the semantic layer, who approves access), with domain stewards consulted on content and sensitivity.",
+                "plainEnglish": "Responsibility for internal data-sharing decisions is assigned (which systems share data, what's made available, who approves access), with the relevant data owners consulted on sensitivity."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Accountability for external federation decisions is assigned (which partners, what's exposed beyond the organisation, who approves cross-organisational access).",
+                "plainEnglish": "Responsibility for sharing data with outside partners is also assigned (which partners, what's made available, who approves external access)."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Named points of contact operate for each federation partner, responsible for onboarding, day-to-day liaison and resolving data/semantic issues through agreed cross-organisational routes.",
+                "plainEnglish": "There's a named point of contact for each outside partner, responsible for setting up the relationship, day-to-day liaison, and sorting out any data issues that come up."
+              }
+            }
+          ]
+        },
+        {
+          "id": "organisational_q5",
+          "number": 5,
+          "text": {
+            "technical": "Has tacit knowledge that bridges systems been identified, documented and externalised into the ontology, removing dependency on specific individuals?",
+            "plainEnglish": "Has the informal, undocumented knowledge that certain individuals use to bridge gaps between systems been identified, written down, and built into the shared systems, so the organisation isn't dependent on those specific people?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No visibility of where interoperability depends on specific individuals' informal knowledge.",
+                "plainEnglish": "There's no visibility of where the organisation depends on individuals' informal, undocumented knowledge to keep systems working together."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "Individuals whose informal knowledge currently bridges systems are identified, with a register recording tacit knowledge dependencies and the risk if they left the organisation.",
+                "plainEnglish": "The people whose informal knowledge currently bridges systems have been identified, with a record kept of this dependency and the risk if they left."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "The reconciliation logic these individuals apply (the rules, judgements and assumptions behind how they bridge systems) is documented.",
+                "plainEnglish": "The reasoning these people apply (the rules, judgement calls and assumptions behind how they bridge systems) has been written down."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Documented reconciliation logic is externalised into the ontology and mappings for priority domains, so judgements previously applied manually are expressed formally and applied consistently.",
+                "plainEnglish": "This documented reasoning has been built into the organisation's shared systems for priority areas, so judgement calls that used to be made manually now happen automatically and consistently."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Externalisation extends across all internal domains, with the tacit knowledge register confirming dependencies on named individuals have been removed.",
+                "plainEnglish": "This has been extended across all areas, and the organisation has confirmed it's no longer dependent on specific named individuals."
+              }
+            }
+          ]
+        },
+        {
+          "id": "organisational_q6",
+          "number": 6,
+          "text": {
+            "technical": "Does a cross-functional forum coordinate interoperability work, resolve terminology conflicts, approve ontology releases and review steward performance?",
+            "plainEnglish": "Is there a group bringing together people from different parts of the organisation to coordinate this work, sort out disagreements over terminology, sign off changes to the shared data model, and check how well the day-to-day data roles are working?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No cross-functional forum or mechanism exists to coordinate interoperability work or resolve terminology conflicts across domains.",
+                "plainEnglish": "No such group or mechanism exists to coordinate this work or resolve disagreements across different areas."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "A cross-functional forum is established to coordinate interoperability work, share assessment findings, set joint priorities and resolve terminology conflicts arising from competency-question workshops, reporting to the accountable owner.",
+                "plainEnglish": "A cross-functional group has been set up to coordinate this work, share findings, agree joint priorities, and resolve terminology disagreements, reporting to the senior owner from Question 1."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "The forum's remit extends to confirming the ontology represents meaning agreed across domains, and approving it for release.",
+                "plainEnglish": "This group's role also covers checking that the shared data model reflects meaning that's been agreed across different areas, and formally signing it off before release."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Steward performance and capacity is reviewed on a defined frequency, using quality, reporting-rate and change-assessment metrics, to identify where stewardship is not being exercised effectively.",
+                "plainEnglish": "How well the day-to-day data roles (from Question 3) are being carried out is reviewed regularly, using measures like quality, how often issues are reported, and how changes are assessed, to spot where things aren't working well."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "The forum, escalation routes and review cycles are reviewed and adjusted as federation extends externally.",
+                "plainEnglish": "The group, its escalation routes and its review cycles are reviewed and adjusted as data sharing extends to outside partners."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cultural",
+      "name": "Cultural",
+      "questionCount": 7,
+      "questions": [
+        {
+          "id": "cultural_q1",
+          "number": 1,
+          "text": {
+            "technical": "Has a shared glossary of agreed terms been published, aligned to the ontology, and extended across all domains and to external partners?",
+            "plainEnglish": "Has an agreed set of definitions for key terms been published, kept consistent with the shared data model as it develops, and made available across the whole organisation and to outside partners?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No agreed terminology exists; teams operate with inconsistent terms and definitions.",
+                "plainEnglish": "There's no agreed set of definitions; different teams use inconsistent terms and meanings."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "The operational cost of inconsistent terminology has been documented — where it has caused rework, delay or incorrect decisions across teams.",
+                "plainEnglish": "The real cost of this inconsistency has been documented, showing where it's caused rework, delays or wrong decisions."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "A glossary of agreed terms is published for priority domains, aligned to the ontology as it develops, and accessible to all staff.",
+                "plainEnglish": "A glossary of agreed terms is published for the priority areas, kept consistent with the shared data model as it develops, and available to all staff."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "The glossary extends to all domains, with agreed terminology in active use in reporting, documentation and system configuration; data dialects are eliminated for core concepts.",
+                "plainEnglish": "The glossary covers all areas, and agreed terms are actually used in reports, documents and system setup; the same idea being called different things in different places has been eliminated for core concepts."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Shared terminology is agreed and maintained with external federation partners as their own definitions evolve.",
+                "plainEnglish": "Shared terms are agreed and kept up to date with outside partners, as their own definitions change over time."
+              }
+            }
+          ]
+        },
+        {
+          "id": "cultural_q2",
+          "number": 2,
+          "text": {
+            "technical": "Have cross-functional competency-question workshops been run to define shared meaning, extended to all domains and to partner terminology?",
+            "plainEnglish": "Have sessions been run bringing different teams together to agree what key terms mean, and has this been extended to cover every area of the business and outside partners' terminology too?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No cross-functional dialogue exists to define shared meaning; terminology decisions are made in isolation.",
+                "plainEnglish": "There's no cross-team conversation to agree shared meaning; decisions about terminology are made in isolation."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "Awareness of why shared terminology matters is communicated to affected teams using documented pain points, and cross-functional competency-question workshops are run for priority domains, bringing together teams with conflicting definitions.",
+                "plainEnglish": "Teams have been made aware of why this matters, using documented examples of where it's caused problems, and sessions have been run for the priority areas, bringing together teams whose definitions conflict."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Workshops are repeated for all remaining domains, extending participation to the teams involved.",
+                "plainEnglish": "These sessions have been repeated for all remaining areas, involving all the relevant teams."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Partner teams are engaged to identify where their terminology diverges from the organisation's agreed terms, with differences documented.",
+                "plainEnglish": "Partner organisations' teams have been brought in to identify where their terminology differs from the organisation's agreed terms, with the differences documented."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Workshop practice and partner terminology alignment are maintained as new domains or partners are onboarded.",
+                "plainEnglish": "These sessions and the alignment with partners are kept up as new areas or partners join."
+              }
+            }
+          ]
+        },
+        {
+          "id": "cultural_q3",
+          "number": 3,
+          "text": {
+            "technical": "Has data literacy been assessed and foundational training delivered, extended to all users and embedded in onboarding?",
+            "plainEnglish": "Has staff understanding of data been assessed, has basic training been delivered to close any gaps, and is this now built into how new staff are onboarded?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No assessment of data literacy or semantic skills exists; no foundational training is provided.",
+                "plainEnglish": "There's no assessment of staff understanding of data, and no basic training is provided."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "Current data literacy and semantic skills are assessed across affected teams, including ontology development skills required, with foundational training delivered to close identified gaps.",
+                "plainEnglish": "Current understanding has been assessed across the relevant teams, including the specialist skills needed to build the shared data model, and basic training has been delivered to close the gaps found."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Data producer training extends to all remaining internal systems as quality rules and validation roll out beyond priority datasets.",
+                "plainEnglish": "Training for the people entering data has been extended to cover all remaining systems, as quality rules are rolled out more widely."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Query and interpretation training extends to all users across all domains, with semantic layer and data quality training embedded into role onboarding.",
+                "plainEnglish": "Training on how to search for and interpret data has been extended to everyone across the organisation, and is now a standard part of onboarding."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "The organisation actively participates in established communities of practice for federated data, building shared understanding of terminology, divergence and interpretation across organisations.",
+                "plainEnglish": "The organisation actively takes part in external groups working on shared data practices, to build a wider understanding of terminology and interpretation across different organisations."
+              }
+            }
+          ]
+        },
+        {
+          "id": "cultural_q4",
+          "number": 4,
+          "text": {
+            "technical": "Have producers, query users and stewards received role-specific training on quality rules, querying and change-impact assessment?",
+            "plainEnglish": "Have the people who enter data, the people who search for it, and the people responsible for looking after it, each received training suited to their specific role?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No role-specific training exists; producers, query users and stewards are not equipped for their part in the semantic layer.",
+                "plainEnglish": "There's no training tailored to these different roles; people aren't properly equipped for their part in the system."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "Data producers in priority systems are trained on the quality rules and thresholds applied to the data they capture, and on handling records that fail validation at the point of capture.",
+                "plainEnglish": "People entering data into the priority systems are trained on the quality rules that apply to it, and how to handle cases that fail a check when first entered."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Pilot users are trained to query through the semantic layer using ontology terms and to interpret federated results, including provenance and currency; those operating ontology change control are trained on the approval route and on identifying what a proposed change would affect.",
+                "plainEnglish": "A pilot group is trained to search for information using shared, everyday terms and to interpret the results (including where the data came from and how current it is); the people responsible for approving changes to the shared data model are trained on how that approval process works."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Stewards are trained to assess ontology change impact at scale, using lineage and metadata records to trace which mappings, queries and application ontologies depend on a concept before a change is approved.",
+                "plainEnglish": "The people responsible for looking after data are trained to assess, at scale, what a proposed change to the shared data model would affect, using the available records to trace the knock-on effects before a change is approved."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Role-specific training is refreshed and extended as new roles, systems or domains are onboarded.",
+                "plainEnglish": "This role-specific training is refreshed and extended as new roles, systems or areas come on board."
+              }
+            }
+          ]
+        },
+        {
+          "id": "cultural_q5",
+          "number": 5,
+          "text": {
+            "technical": "Is the semantic layer trusted and adopted as the routine route for cross-system access, replacing manual reconciliation?",
+            "plainEnglish": "Do people trust and actually use the shared system as their normal way of pulling together information from different systems, rather than doing it manually by hand?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No measurement of manual reconciliation effort exists; the semantic layer, where present, is not trusted or used for real tasks.",
+                "plainEnglish": "There's no measure of how much manual effort is spent reconciling data by hand, and any shared system that exists isn't trusted or used for real work."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "The current effort spent on manual data reconciliation across teams is measured, establishing a baseline to demonstrate improvement against.",
+                "plainEnglish": "The current effort spent reconciling data manually across teams has been measured, giving a starting point to show improvement against."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Pilot users are supported in adopting the query interface for real tasks rather than test cases, with feedback captured and improvement reported against the baseline.",
+                "plainEnglish": "A pilot group is supported in using the new way of searching for real work, not just test cases, with feedback collected and improvement reported against the starting point."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "The semantic layer becomes the routine route for cross-system access as self-service extends to all users, with reconciliation reduced to exception cases; where users continue to rely on manual routes, the underlying causes are investigated and addressed.",
+                "plainEnglish": "The shared system becomes the normal way of accessing information across systems, as more people start using it, with manual reconciliation only needed for exceptions; where people still rely on manual methods, the reasons why are looked into and addressed."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Manual reconciliation processes are formally retired, with the semantic layer established as the sole approved route for cross-system data access.",
+                "plainEnglish": "Manual reconciliation is formally retired, and the shared system becomes the only approved way to access information across systems."
+              }
+            }
+          ]
+        },
+        {
+          "id": "cultural_q6",
+          "number": 6,
+          "text": {
+            "technical": "Is there an open, safe environment for reporting data errors and terminology conflicts, with visible resolution and cross-partner escalation?",
+            "plainEnglish": "Is there an open, safe way for people to report data errors or disagreements over what terms mean, with visible follow-up, and can issues be raised and resolved with outside partners too?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No route exists for reporting data errors, terminology conflicts or semantic inconsistencies.",
+                "plainEnglish": "There's no way to report data errors, terminology disagreements or other inconsistencies."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "An open, safe route for reporting data errors, terminology conflicts and semantic inconsistencies is established, with teams encouraged to report freely so assessments and registers reflect the true state of systems and data.",
+                "plainEnglish": "An open, safe way to report these issues has been set up, with teams actively encouraged to speak up, so the true state of things is properly understood."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Reported issues are routed into ontology change control or data quality exception handling, with resolution made visible to the people who raised them.",
+                "plainEnglish": "Reported issues are properly followed up (fed into the approval process for the shared data model, or into data quality fixes), with the outcome made visible to whoever raised it."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Reporting and resolution rates are reviewed on a defined frequency, treating low reporting in any area as a signal to investigate further rather than evidence of few problems.",
+                "plainEnglish": "How many issues are reported and resolved is reviewed regularly, and if an area reports very few issues, that's treated as worth investigating rather than assumed to mean everything's fine."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Routes are agreed with external federation partners for raising and resolving data and semantic issues across organisational boundaries, including how issues in partner data are escalated and tracked.",
+                "plainEnglish": "Agreed ways of raising and resolving these issues exist with outside partners too, including how problems with partners' own data get escalated and tracked."
+              }
+            }
+          ]
+        },
+        {
+          "id": "cultural_q7",
+          "number": 7,
+          "text": {
+            "technical": "Is ontology-first thinking part of how new work is scoped, extending to how the organisation works with partners?",
+            "plainEnglish": "When planning new work, do teams start by thinking about how it fits with the organisation's shared way of describing data, rather than solving things in isolation, and does this extend to how the organisation works with partners?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "New data, systems and integrations are scoped independently of shared meaning, with no consideration of interoperability implications.",
+                "plainEnglish": "New data, systems and projects are planned without any thought to how they fit with a shared, consistent way of describing data."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "Teams are aware that new work should be expressed in shared terms from the outset, understanding the cost of ad hoc approaches through the documented pain-point evidence.",
+                "plainEnglish": "Teams are aware that new work should use shared terms from the outset, understanding the cost of not doing so, based on the documented examples of where it's caused problems."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Teams routinely consult the published glossary and ontology when scoping new work, checking for existing shared terms before creating their own.",
+                "plainEnglish": "Teams routinely check the published glossary and shared data model when planning new work, looking for existing shared terms before creating their own."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Teams proactively raise the interoperability and semantic implications of their own work without being prompted, feeding back new concepts for inclusion rather than modelling them locally.",
+                "plainEnglish": "Teams proactively flag the wider implications of their own work for how well things connect and mean the same thing elsewhere, without being asked, and suggest new shared terms rather than creating their own local versions."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Ontology-first thinking is embedded as a shared value across internal teams and extended to how the organisation works with partners, making semantic compatibility a normal consideration rather than an imposed requirement.",
+                "plainEnglish": "This way of thinking is a shared value across internal teams and extends to how the organisation works with partners, making this a normal part of how work gets done rather than something imposed from outside."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "strategic_governance",
+      "name": "Strategic & Governance",
+      "questionCount": 4,
+      "questions": [
+        {
+          "id": "strategic_governance_q1",
+          "number": 1,
+          "text": {
+            "technical": "Has a data-sharing risk register been established, with classification, access, usage, provenance and retention policies defined and enforced across all internal systems and reviewed as federation extends externally?",
+            "plainEnglish": "Does the organisation have a clear record of the risks involved in sharing data, covering who can access it, how it can be used, where it came from and how long it is kept, and are these rules actively followed and reviewed as data sharing extends to outside partners?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No risk register exists; the regulatory, contractual and governance requirements applying to data sharing are not identified.",
+                "plainEnglish": "No one has mapped out the risks or rules around sharing data; it is unclear what is allowed."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "A data-sharing risk register is established (data protection, commercial confidentiality, IP, contractual obligations), and the full scope of policy areas requiring definition is documented (access, usage, provenance, retention, classification, quality obligations, sovereignty, automated governance authority).",
+                "plainEnglish": "A basic register of data-sharing risks exists, and the areas needing rules (who can see what, how it can be used, where it came from, how long to keep it) have been identified."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Data classification and intra-organisational access/usage policies are defined and enforceable; provenance requirements and a retention/deletion policy are defined for federated data.",
+                "plainEnglish": "Clear rules exist for who can access and use data inside the organisation, plus rules for tracking where data came from and how long to keep it, when sharing across teams."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Policies extend to all internal systems and domains as federation coverage widens, enforced through the semantic layer and connectors.",
+                "plainEnglish": "These rules are applied consistently everywhere in the organisation, not just in a few areas, as more teams and systems get connected."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Policies are operated and reviewed against a defined governance performance measure across internal and external sharing, iterating as partners, regulation and risk change.",
+                "plainEnglish": "The rules are actively checked and improved on a regular basis, both inside the organisation and with outside partners, adapting as needs change."
+              }
+            }
+          ]
+        },
+        {
+          "id": "strategic_governance_q2",
+          "number": 2,
+          "text": {
+            "technical": "Are data sovereignty principles, partner trust requirements and usage-control mechanisms defined and operated across external federation, including a data space governance framework with partners?",
+            "plainEnglish": "When sharing data with partners outside the organisation, is there a clear position on what control is kept over that data, who can be trusted, and what partners are and are not allowed to do with it?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No consideration has been given to data sovereignty or partner trust; external federation, if it exists, operates without a governing position.",
+                "plainEnglish": "No thought has been given to keeping control of data shared with outside partners, or who to trust with it."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "Leadership establishes an initial position on whether and how the organisation intends to federate externally — a strategic stance on sovereignty and partner trust set ahead of, and independently of, technical execution.",
+                "plainEnglish": "Leadership has taken an initial view on whether and how to share data with outside partners, and what level of trust and control that requires."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Contractual instruments and sovereignty principles are defined, specifying what control is retained over shared data and what receiving parties may and may not do with it.",
+                "plainEnglish": "Clear agreements are in place setting out what control the organisation keeps over shared data, and what partners are and are not allowed to do with it."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Technical usage-control and sovereignty mechanisms are specified for external federation (attribute-based access control, usage policy enforcement, provenance/logging to detect misuse), and partner trust and assurance requirements are defined ahead of connection.",
+                "plainEnglish": "Technical safeguards are in place to enforce those agreements (limiting who can use data and how, and tracking any misuse), and partners are checked for trustworthiness before being connected."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "A data space governance framework is established with partners — rules of participation, provider/consumer responsibilities, and agreements binding each partner — with sovereignty and usage control actively enforced across live external federation.",
+                "plainEnglish": "A shared governance framework exists with partners, setting out everyone's responsibilities, with those rules actively enforced across live data sharing."
+              }
+            }
+          ]
+        },
+        {
+          "id": "strategic_governance_q3",
+          "number": 3,
+          "text": {
+            "technical": "Has a security threat assessment been completed, with access enforcement, automation governance and monitoring extended across internal and external federation?",
+            "plainEnglish": "Has a security review been carried out to identify risks to shared data, with access properly controlled and monitored, and are these protections extended to cover data shared with outside partners?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No security threat assessment exists; access to the semantic layer is not authenticated or enforced.",
+                "plainEnglish": "No security review has been done; access to data is not properly controlled or checked."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "An internal security threat assessment is completed (insider threats, data leakage, integrity risks), with required controls recorded in the risk register.",
+                "plainEnglish": "An internal security review has identified key risks (such as data leaks or unauthorised changes), with follow-up actions logged."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "Authentication and access enforcement are required for the semantic layer and query interface, assured against defined policy; a technical automation governance framework is established (who may change automated identifier/metadata/lineage/quality rules, what approval and audit trail is required).",
+                "plainEnglish": "Only approved, verified people can access shared data, and there are clear rules for who is allowed to change how data is automatically identified, labelled or processed."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Access enforcement and monitoring extend to all internal systems, with unauthorised access and policy violations detected; external federation security and assurance requirements are defined ahead of partner connection.",
+                "plainEnglish": "Access controls and monitoring cover the whole organisation, catching unauthorised access, and security requirements are set before connecting to outside partners."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "Continuous security assurance operates across internal and external federation, reviewing threats, access anomalies and automation performance on a defined cadence, updating controls as the landscape changes.",
+                "plainEnglish": "Security is checked continuously, both internally and with partners, with rules updated regularly as risks and technology change."
+              }
+            }
+          ]
+        },
+        {
+          "id": "strategic_governance_q4",
+          "number": 4,
+          "text": {
+            "technical": "Has an ontology-first strategy been formally ratified, embedded in project scoping and procurement, with federation partners prioritised and the strategy reviewed on a defined cycle?",
+            "plainEnglish": "Has the organisation formally committed to a consistent, standards-based approach for making data understandable and shareable across systems, and is this approach factored into project planning and purchasing decisions?"
+          },
+          "levels": [
+            {
+              "level": 1,
+              "text": {
+                "technical": "No strategic position on interoperability exists; each system or project decides its own approach independently.",
+                "plainEnglish": "There is no organisation-wide approach; each team or project decides its own way of connecting systems."
+              }
+            },
+            {
+              "level": 2,
+              "text": {
+                "technical": "Leadership formally recognises interoperability as a strategic priority and commissions an assessment or roadmap (such as this self-assessment) to establish current maturity and future direction.",
+                "plainEnglish": "Leadership has formally recognised this as a strategic priority and commissioned a review (such as this assessment) to understand where things stand and what to do next."
+              }
+            },
+            {
+              "level": 3,
+              "text": {
+                "technical": "An ontology-first strategy is formally ratified as the organisation's approach to interoperability (standards-aligned ontologies and federated access over point-to-point integration), and interoperability/semantic compatibility is required when scoping new systems and projects.",
+                "plainEnglish": "A consistent, standards-based approach has been formally agreed as the organisation's way of working, and new projects are expected to follow it."
+              }
+            },
+            {
+              "level": 4,
+              "text": {
+                "technical": "Semantic impact assessment is embedded in system approval and procurement as a selection criterion; federation partners are determined and prioritised against defined criteria (trust, assurance, security requirements, partner semantic capability, mapping effort).",
+                "plainEnglish": "This approach is a required factor when approving new systems or purchases, and partners for data sharing are chosen and prioritised using clear criteria."
+              }
+            },
+            {
+              "level": 5,
+              "text": {
+                "technical": "The interoperability strategy is reviewed on a defined frequency against realised benefit and the evolving partner/standards landscape, directing the next cycle of improvement.",
+                "plainEnglish": "The approach is reviewed regularly against the benefits it is delivering and how partners and standards are changing, to guide ongoing improvement."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

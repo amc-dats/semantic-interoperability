@@ -1,0 +1,947 @@
+{
+  "dimensions": {
+    "technical": {
+      "1": [
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "TE1.2a",
+          "activity": "Audit all existing inter-system connections and integrations.",
+          "outcome": "System integration map."
+        }
+      ],
+      "2": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "TE1.2b",
+          "activity": "Identify which standardised communication protocols are already in use locally (e.g. OPC UA, MQTT, REST).",
+          "outcome": "Communication protocol inventory."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "TE1.3b",
+          "activity": "Define and enforce standardised communication protocol usage for critical systems: identify critical systems and contexts; specify approved protocols; enforce compliance via network access controls; document and communicate governance policies.",
+          "outcome": "Communication protocol governance documented and enforced for critical/core systems."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "TE1.4b",
+          "activity": "Extend communication protocol standardisation and enforcement of rules to all operational systems.",
+          "outcome": "Full communication protocol standardisation covering all operational systems."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "TE1.5b",
+          "activity": "Implement automated communication protocol governance and mechanisms to ensure continuous compliance and optimal protocol usage across all systems (e.g. AI agents that monitor and reconfigure protocols).",
+          "outcome": "Automated protocol governance operational, ensuring continuous compliance and optimal usage."
+        }
+      ],
+      "3": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "TE2.2c",
+          "activity": "Establish identifier management processes and assign persistent identifiers to critical data assets.",
+          "outcome": "Persistent identifiers assigned to critical data assets; identifier management processes established."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "TE2.3c",
+          "activity": "Expand persistent identifier coverage to all key datasets, automate identifier assignment for new assets, and integrate identifiers with metadata management systems to facilitate semantic linking.",
+          "outcome": "Persistent identifiers extended to all key datasets, integrated with metadata management systems."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "TE2.4c",
+          "activity": "Extend persistent identifier coverage to all data assets; fully automate identifier lifecycle management.",
+          "outcome": "Persistent identifiers extended to all data assets, lifecycle management fully automated, establishing FAIR findability."
+        }
+      ],
+      "4": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "TE2.2b",
+          "activity": "Assess current practices for metadata management and persistent identifiers; identify gaps, inconsistencies and areas for improvement.",
+          "outcome": "Gap assessment report covering metadata and persistent identifiers."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "TE2.3b",
+          "activity": "Establish metadata standards and governance processes based on the gap assessment; pilot automated metadata capture for new data assets.",
+          "outcome": "Metadata standards and governance processes defined; automated metadata capture piloted for new assets."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "TE2.4b",
+          "activity": "Implement automated metadata capture for all data assets; integrate metadata with data catalogues and governance tools.",
+          "outcome": "Automated metadata capture and integration with data catalogues and governance tools implemented for all data assets, supporting FAIR findability and reusability."
+        }
+      ],
+      "5": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "TE2.2a",
+          "activity": "Assess current state of data lineage and provenance documentation; identify critical data assets and key data flows; identify gaps and document lineage for critical data flows.",
+          "outcome": "Data lineage and provenance gap report and high-level documentation for critical data flows."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "TE2.3a",
+          "activity": "Establish data lineage and provenance standards and processes (recording origin, authorship and transformation history); develop an automation roadmap; pilot automated capture for a subset of critical flows.",
+          "outcome": "Data lineage and provenance standards and processes defined, automation roadmap created, automated capture piloted."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "TE2.4a",
+          "activity": "Implement automated lineage and provenance capture for all critical and high-priority flows.",
+          "outcome": "Automated lineage and provenance capture implemented for critical and high-priority flows."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "TE2.5a",
+          "activity": "Extend automated lineage and provenance capture to all data flows; use machine learning to improve accuracy and detect anomalies in data flows, access and integrity.",
+          "outcome": "Automated capture extended to all data flows, with ML-driven accuracy improvement and anomaly detection."
+        }
+      ],
+      "6": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "TE3.2a",
+          "activity": "Assess the quality of data in priority systems against defined quality dimensions (accuracy, completeness, format consistency, timeliness); record a baseline for each dataset.",
+          "outcome": "Data quality baseline gap report for priority datasets."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "TE3.3a",
+          "activity": "Extend quality assessment, rules and thresholds to all remaining internal systems; correct data quality to agreed thresholds; implement validation at the point of capture.",
+          "outcome": "All internal datasets compliant with agreed data quality thresholds, with validation at capture."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "TE3.4a",
+          "activity": "Implement ontology-based validation using constraint languages such as SHACL, so the ontology continuously checks conformance rather than validating only at capture.",
+          "outcome": "Ontology-based validation operating as a persistent quality control."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "TE3.5a",
+          "activity": "Automatically correct quality issues identified by ontology-based validation, correcting them in the source system where rules allow and escalating only exceptions requiring human judgement.",
+          "outcome": "Quality failures resolved at source without manual intervention, with exceptions escalated."
+        }
+      ],
+      "7": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "TE4.2a",
+          "activity": "Assess how users currently access and query data across systems; document manual processes, workarounds and pain points.",
+          "outcome": "Current data access and query assessment report."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "TE4.3a",
+          "activity": "Deploy a query interface enabling pilot users to query across distributed sources via the semantic layer (e.g. SPARQL endpoint, GraphQL server or federated query tool) for priority domains.",
+          "outcome": "Query interface operational for pilot users, with authentication and access enforcement applied."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "TE4.4a",
+          "activity": "Extend query interface to self-service for all users across all domains; implement role-based access controls within the query layer.",
+          "outcome": "Self-service query access operational for all users, with role-based access control and enforcement across all systems."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "TE4.5a",
+          "activity": "Extend query interface to cover federated external partner data sources; implement query performance monitoring and optimisation.",
+          "outcome": "Query interface covers all datasets including external data, with performance monitoring, optimisation and access enforcement for external users."
+        }
+      ],
+      "8": [
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "TE5.3a",
+          "activity": "Deploy standardised connectors for priority systems, enabling each system to expose its data via standardised protocols for the semantic layer to query against.",
+          "outcome": "Standardised connectors deployed for priority systems."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "TE5.4a",
+          "activity": "Extend connector coverage to all internal systems, enabling vertical federation.",
+          "outcome": "Decentralised data access covering all systems."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "TE5.5a",
+          "activity": "Extend federation infrastructure to external partner systems (horizontal federation); configure cross-organisational connectors (e.g. Eclipse Dataspace Connector / IDS); implement failover mechanisms.",
+          "outcome": "External federation infrastructure operational with resilience."
+        }
+      ],
+      "9": [
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "TE5.3b",
+          "activity": "Assess whether any legacy equipment (machinery without native connectivity) is in scope for federation and document requirements.",
+          "outcome": "Legacy equipment scope assessment and requirements documented."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "TE5.4b",
+          "activity": "Implement AAS or an equivalent standardised wrapper for legacy equipment identified as in scope.",
+          "outcome": "Legacy equipment accessible through standardised connectors."
+        }
+      ]
+    },
+    "semantic": {
+      "1": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "SE1.2a/SE1.2b",
+          "activity": "Inventory existing semantic assets across systems and domains (data dictionaries, glossaries, taxonomies, code lists, local ontologies or fragments). Identify priority data domains, system boundaries and the cross-system use cases a shared approach must serve, expressing each as competency questions.",
+          "outcome": "Semantic asset register; priority domain scope and competency questions defined."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "SE1.2c/d/e",
+          "activity": "Identify and evaluate published ontologies, reference standards and classification systems relevant to priority domains and competency questions (e.g. IOF-Core, ISA-95, AAS, ECLASS, IEC CDD). Select and formally adopt reference standards, documenting organisation-specific gaps requiring local development. Select a top-level ontology (e.g. BFO/ISO 21838-2) to provide the domain-neutral upper structure.",
+          "outcome": "Reference standards adopted for priority domains; top-level ontology selected and rationale documented."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "SE1.3a",
+          "activity": "Extend scoping and selection to all remaining domains beyond the initial priority scope. Scope the application ontologies required for each by defining use cases and competency questions, then identify, evaluate and select the domain-level standards needed.",
+          "outcome": "Application ontology scope and domain-level standards selected for all domains."
+        }
+      ],
+      "2": [
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "SE1.4a/SE1.4b",
+          "activity": "Establish which top-level, domain and application ontologies external federation partners use. Identify divergence from organisational selections and determine mappings required to reconcile them ahead of horizontal federation. Establish ongoing monitoring of standards for revisions and emerging standards relevant to adopted selections.",
+          "outcome": "Partner ontology landscape documented with divergence and mapping requirements identified; standards revisions monitored and flagged."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "SE1.5a",
+          "activity": "Participate in relevant standards bodies to influence standards development, and maintain alignment with external federation partners as their selections evolve.",
+          "outcome": "Active participation in standards development with partner alignment maintained."
+        }
+      ],
+      "3": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "SE2.2a",
+          "activity": "Establish ontology development capability, selecting modelling languages and tooling (e.g. OWL, SKOS, SHACL, Protégé). Define naming, versioning and modelling conventions and confirm the skills required are available or accessible.",
+          "outcome": "Ontology development conventions, tooling and capability in place."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "SE2.3a",
+          "activity": "Develop the domain ontology for priority domains by adopting the standards selected and extending them with organisation-specific concepts identified as gaps, constructed beneath the selected top-level ontology, with reasoner-based consistency checking applied before publication.",
+          "outcome": "Domain ontology published and versioned for priority domains, aligned to the selected top-level ontology."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "SE2.3b/c",
+          "activity": "Develop application ontologies for the priority use cases, built on the domain ontology. Validate the ontologies against the identified competency questions, documenting which questions are answered correctly and correcting any coverage gaps.",
+          "outcome": "Application ontologies published for priority use cases; competency question test results documented with coverage gaps corrected."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "SE2.4a",
+          "activity": "Extend domain and application ontology development to all remaining domains using the standards selected, applying reasoner-based consistency checking and validating against defined competency questions.",
+          "outcome": "Domain and application ontologies published and validated for all domains."
+        }
+      ],
+      "4": [
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "SE2.3d",
+          "activity": "Establish ontology change control with version numbering, change request, approval route and a published release record, receiving gaps and errors raised through the established reporting route.",
+          "outcome": "Ontology change control operational with a defined route for ongoing correction and extension."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "SE2.4b",
+          "activity": "Formalise and operate the ontology lifecycle. Define release cadence, govern how changes that would invalidate existing queries and mappings are approved and how retired terms are deprecated, assess dependencies before approving changes and maintain ontologies as requirements and standards evolve.",
+          "outcome": "Ontology lifecycle process operational with change impact assessed before release and ontologies actively maintained."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "SE2.5a",
+          "activity": "Implement automated regression testing for ontology releases, validating that changes do not invalidate existing competency questions, mappings or partner agreements before publication.",
+          "outcome": "Ontology releases automatically validated before publication."
+        }
+      ],
+      "5": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "SE3.2a",
+          "activity": "Document how data is currently structured in each priority system, recording the field names, data types, formats and code lists each system uses.",
+          "outcome": "Record of how data is structured in each priority system."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "SE3.3a",
+          "activity": "Develop and document source-to-ontology mappings for priority systems, expressing each source field as its corresponding ontology concept using a mapping language (e.g. RML).",
+          "outcome": "Source-to-ontology mappings documented for priority systems."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "SE3.4a",
+          "activity": "Extend source-to-ontology mappings to all internal systems, achieving field-level query translation across the full internal architecture.",
+          "outcome": "Full OBDA operational across all internal systems."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "SE3.5a",
+          "activity": "Develop mappings reconciling external partner schemas and ontologies to the organisation's own ontology, resolving any divergence identified.",
+          "outcome": "Partner data queryable."
+        }
+      ],
+      "6": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "SE3.2b",
+          "activity": "Identify terminology conflicts across systems where the same concept is named differently, or the same term carries different meanings, documenting the data dialects in use.",
+          "outcome": "Data dialects register recording terminology conflicts across systems."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "SE3.3b/c",
+          "activity": "Resolve entity duplication across mapped systems, defining matching rules to determine when records in different systems refer to the same real-world entity. Validate that queries expressed in ontology terms translate correctly against mapped sources, testing against competency questions.",
+          "outcome": "Entity resolution rules defined and applied; query translation validated against competency questions for priority domains."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "SE3.4b/c",
+          "activity": "Establish mapping maintenance, detecting when source schema changes invalidate existing mappings and defining the route for correction. Pilot automated mapping generation on a subset of systems, comparing against manually developed mappings to establish accuracy and validation requirements.",
+          "outcome": "Schema change detection operational with mappings maintained; automated mapping generation piloted with accuracy and validation requirements established."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "SE3.5b",
+          "activity": "Automate mapping generation for new and changed data sources using schema matching or machine-learning-assisted alignment, with human validation before deployment.",
+          "outcome": "New sources onboarded with automated mapping generation and human validation."
+        }
+      ],
+      "7": [
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "SE4.2a",
+          "activity": "Decide the semantic layer architecture and how it will hold data: reading live from source systems at query time, each system maintaining its own knowledge graph queried through a single access point, or a combination. Central aggregation into a single repository is excluded as it conflicts with the decentralisation principle. Note that reading live from source systems excludes link prediction at Level 5.",
+          "outcome": "Semantic layer approach and platform selection, with rationale documented against the decentralisation principle."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "SE4.3a",
+          "activity": "Deploy the semantic layer for priority domains, loading the ontology and mappings so that data held in separate systems can be queried through shared ontology terms.",
+          "outcome": "Semantic layer operational for priority domains."
+        }
+      ],
+      "8": [
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "SE4.4a",
+          "activity": "Extend the semantic layer to all internal systems, supporting federation across all internal systems.",
+          "outcome": "Semantic layer operational across all systems."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "SE4.5a",
+          "activity": "Extend the semantic layer to external partner sources, enabling federated query across organisational boundaries.",
+          "outcome": "Semantic layer operational across external partner sources to support horizontal federated query."
+        }
+      ],
+      "9": [
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "SE4.3b",
+          "activity": "Build a catalogue recording which systems hold which concepts, so a query expressed in ontology terms can be directed to the sources able to answer it.",
+          "outcome": "Source catalogue operational enabling queries to be routed automatically."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "SE4.4b",
+          "activity": "Extend the source catalogue to all internal systems, supporting federation across all internal systems.",
+          "outcome": "Source catalogue operational across all systems."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "SE4.5b",
+          "activity": "Extend the source catalogue to external partner sources, enabling federated query across organisational boundaries.",
+          "outcome": "Source catalogue operational across external partner sources."
+        }
+      ],
+      "10": [
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "SE4.3c",
+          "activity": "Pilot vertical federated query across at least two previously separate systems and validate against the previously defined competency questions.",
+          "outcome": "Federated query demonstrated across priority systems and validated against competency questions."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "SE4.4c/d",
+          "activity": "Monitor federated query performance, reliability and optimise how queries are decomposed and routed across systems. Enable logic and reasoning at query time so that relationships defined in the ontology are applied when queries are run, returning results that are implied by the ontology but not explicitly stated in any source system.",
+          "outcome": "Federated query performance monitored and optimised; query-time reasoning operational across federated sources."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "SE4.5c",
+          "activity": "Where the semantic layer holds data in knowledge graphs rather than reading live from source systems, apply link prediction to identify relationships between entities that exist in practice but are not recorded, and surface them for validation.",
+          "outcome": "Missing relationships between entities identified and validated for inclusion, where the selected architecture supports it."
+        }
+      ]
+    },
+    "organisational": {
+      "1": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "OR1.2a",
+          "activity": "Assign senior accountability for interoperability, with a named owner responsible for progress across all five dimensions and authority for decision making and resolution of conflicts across dimensions.",
+          "outcome": "Named senior owner accountable for interoperability across all dimensions."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "OR1.3a-new (proposed)",
+          "activity": "Formally document the accountability remit (e.g. a charter or terms of reference) and communicate it across the organisation, so the assignment is known beyond the individual holding it. Proposed new activity, not yet in the roadmap — pending reconciliation.",
+          "outcome": "Accountability formally documented, communicated and understood across the organisation."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "OR1.4a-new (proposed)",
+          "activity": "Embed accountability into a governance cadence — the owner participates in scheduled decision points, reviews and conflict resolution rather than holding the title without exercising it. Proposed new activity, not yet in the roadmap — pending reconciliation.",
+          "outcome": "Accountability actively exercised through a defined governance cadence, not titular."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "OR1.5a",
+          "activity": "Embed interoperability accountability into role descriptions and recruitment criteria, so it persists independently of the individual currently holding the role.",
+          "outcome": "Interoperability accountability documented in role descriptions and recruitment criteria."
+        }
+      ],
+      "2": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "OR1.2b-revised (proposed)",
+          "activity": "Identify and record the accountable owner for each priority data domain. Revised from the roadmap's system-level wording to domain level — pending reconciliation.",
+          "outcome": "Data ownership recorded for priority data domains."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "OR1.3b",
+          "activity": "Define escalation routes for decisions which cannot be resolved by data stewards, including conflicts between domains over terminology and disputes over authoritative source.",
+          "outcome": "Escalation routes defined for conflicts between domains."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "OR1.4a-revised (proposed)",
+          "activity": "Extend domain ownership recording to all remaining data domains. Revised from the roadmap's system-level wording to domain level — pending reconciliation.",
+          "outcome": "Domain ownership recorded across all domains."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "OR1.6a-new (proposed)",
+          "activity": "Ownership records are actively reviewed and maintained as domains are added, merged, split or redefined. Proposed new activity, not yet in the roadmap — pending reconciliation.",
+          "outcome": "Ownership governance actively maintained as the domain model evolves."
+        }
+      ],
+      "3": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "OR1.2c-new (proposed)",
+          "activity": "Determine the appropriate steward granularity for the organisation (system, dataset or sub-domain) based on complexity, rather than assuming a fixed unit. Proposed new activity, not yet in the roadmap — pending reconciliation.",
+          "outcome": "Stewardship granularity model defined, appropriate to organisational complexity."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "OR1.3a-revised (proposed)",
+          "activity": "Designate stewards at the determined granularity within each priority domain, with a defined remit covering quality rule definition, exception handling, ontology change assessment and terminology decisions, and confirm they have the authority and capacity to exercise it. Revised from the roadmap's domain-only wording — pending reconciliation.",
+          "outcome": "Stewards designated at appropriate granularity for priority domains, with documented remit and authority."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "OR1.4a/OR2.4b",
+          "activity": "Extend steward designation to all systems/datasets across all domains. Define which ontology and quality rule changes stewards may approve within their own remit and which must be referred to the forum, so approval scales as coverage extends.",
+          "outcome": "Stewards designated across all systems/datasets in all domains, with approval delegation defined."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "OR1.5a",
+          "activity": "Embed stewardship accountabilities into role descriptions and recruitment criteria, so they persist independently of the individuals currently holding those roles.",
+          "outcome": "Stewardship accountabilities documented in role descriptions and recruitment criteria."
+        }
+      ],
+      "4": [
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "OR1.3c",
+          "activity": "Assign accountability for internal federation decisions, covering which systems are federated, what data is exposed through the semantic layer, and who approves access, with domain stewards consulted on the content and sensitivity of their domains.",
+          "outcome": "Internal federation accountability assigned."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "OR1.4b",
+          "activity": "Assign accountability for external federation decisions, covering which partners to federate with, what data is exposed beyond the organisation and who approves cross-organisational access.",
+          "outcome": "External federation accountability assigned."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "OR1.5b",
+          "activity": "Assign named points of contact for each federation partner, responsible for onboarding, day-to-day liaison and resolving data and semantic issues raised through the agreed cross-organisational routes.",
+          "outcome": "Named partner contacts operating for each federation relationship."
+        }
+      ],
+      "5": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "OR1.2c",
+          "activity": "Identify individuals whose informal knowledge currently bridges systems, recording where reconciliation depends on specific people and what would be lost if they left the organisation.",
+          "outcome": "Register of tacit knowledge dependencies and associated risk."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "OR3.2a",
+          "activity": "Document how the individuals identified in the tacit knowledge register currently reconcile data between systems, capturing the rules and judgements they apply and the assumptions behind them.",
+          "outcome": "Reconciliation logic documented for identified tacit knowledge dependencies."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "OR3.3a",
+          "activity": "Externalise the documented reconciliation logic into the ontology and mappings for priority domains, so the judgements previously applied manually are expressed formally and applied consistently.",
+          "outcome": "Tacit reconciliation logic formalised in the ontology and mappings for priority domains."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "OR3.4a",
+          "activity": "Externalise remaining tacit reconciliation knowledge across all internal domains and confirm through the tacit knowledge register that dependencies on named individuals have been removed.",
+          "outcome": "Tacit knowledge dependencies removed across all internal domains and verified against the register."
+        }
+      ],
+      "6": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "OR2.2a",
+          "activity": "Establish a cross-functional forum to coordinate interoperability work across dimensions, share assessment findings, set priorities jointly and resolve terminology conflicts arising from the competency question workshops, reporting to the accountable owner.",
+          "outcome": "Cross-functional interoperability forum operating across dimensions."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "OR2.3a",
+          "activity": "Extend the forum remit to confirming that the ontology represents meaning agreed across domains and approving it for release.",
+          "outcome": "Cross-domain agreement on ontology content confirmed through the forum before release."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "OR2.4a",
+          "activity": "Review steward performance and capacity on a defined frequency, using quality measurement, reporting rates and change assessment metrics to identify where stewardship is not being exercised effectively.",
+          "outcome": "Stewardship performance monitoring operational."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "OR2.5a",
+          "activity": "Review whether the forum, escalation routes and review cycles remain appropriate as federation extends externally, and adjust the operating arrangements accordingly.",
+          "outcome": "Operating arrangements reviewed and adjusted for external federation."
+        }
+      ]
+    },
+    "cultural": {
+      "1": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "CU1.2a",
+          "activity": "Engage with teams and document where inconsistent terminology between teams and systems has caused rework, delay, or incorrect decisions, recording the operational cost.",
+          "outcome": "Pain point evidence log quantifying the cost of terminology inconsistency."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "CU1.3a",
+          "activity": "Publish a glossary of agreed terms for priority domains, aligned to the ontology as it is developed, making this accessible to all staff.",
+          "outcome": "Glossary published and accessible, aligned to the ontology for priority domains."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "CU1.4a",
+          "activity": "Extend the glossary to all domains and establish agreed terminology as the standard used in reporting, documentation and system configuration.",
+          "outcome": "Agreed terminology in active use across all domains with data dialects eliminated for core concepts."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "CU1.5a",
+          "activity": "Agree and maintain shared terminology with external federation partners for cross-organisational concepts as partner definitions evolve.",
+          "outcome": "Shared terminology agreed and maintained with external partners."
+        }
+      ],
+      "2": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "CU1.2b/CU1.2c",
+          "activity": "Communicate to affected teams why shared terminology matters, using documented pain points rather than abstract benefits. Run cross-functional competency question workshops to define what the semantic layer for priority domains must answer, bringing together teams that hold conflicting definitions.",
+          "outcome": "Awareness communications delivered to teams in priority domains; competency questions defined through cross-functional workshops."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "CU1.3b",
+          "activity": "Repeat the competency question workshops for all remaining domains, extending participation to the teams involved in those domains.",
+          "outcome": "Competency questions defined for all remaining domains through cross-functional workshops."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "CU1.4b",
+          "activity": "Engage partner teams to identify where their working terminology diverges from the organisation's agreed terms, documenting differences that will affect interpretation of federated results.",
+          "outcome": "Terminology divergence with partners documented."
+        }
+      ],
+      "3": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "CU2.2a",
+          "activity": "Assess current data literacy and semantic skills across affected teams, including the ontology development skills required, and deliver foundational data literacy training to close the gaps identified.",
+          "outcome": "Skills baseline documented and foundational data literacy training delivered."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "CU2.3a",
+          "activity": "Extend data producer training to all remaining internal systems as quality rules and validation are rolled out beyond the priority datasets.",
+          "outcome": "Data producers trained across all internal systems."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "CU2.4a",
+          "activity": "Extend query and interpretation training to all users across all domains. Embed semantic layer and data quality training into role onboarding.",
+          "outcome": "Training extended to all users and embedded in onboarding."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "CU2.5a",
+          "activity": "Participate in established communities of practice for federated data, using them to build shared understanding of terminology, divergence and interpretation across organisations.",
+          "outcome": "Active participation in communities of practice for federated data."
+        }
+      ],
+      "4": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "CU2.2b",
+          "activity": "Train data producers in priority systems on the quality rules and thresholds applied to the data they capture and on how to handle records that fail validation at the point of capture.",
+          "outcome": "Data producers in priority systems trained on quality rules and exception handling."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "CU2.3b/CU2.3c",
+          "activity": "Train pilot users to query through the semantic layer using ontology terms and to interpret federated results including their provenance and how current the data is. Train those operating ontology change control on the approval route and on identifying what a proposed change would affect, so requests can be assessed rather than approved by default.",
+          "outcome": "Pilot users trained and able to query and interpret federated results independently; change control participants trained to assess proposed ontology changes."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "CU2.4b",
+          "activity": "Train stewards to assess ontology change impact at scale, using lineage and metadata records to trace which mappings, queries and application ontologies depend on a concept before a change is approved.",
+          "outcome": "Stewards trained to trace dependencies and assess change impact across all domains."
+        }
+      ],
+      "5": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "CU3.2a",
+          "activity": "Measure the current effort spent on manual data reconciliation across teams, recording how much time is spent gathering and manually reconciling data (rather than using it), as a baseline to demonstrate improvement against.",
+          "outcome": "Baseline measurement of manual reconciliation effort."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "CU3.3a",
+          "activity": "Support pilot users in adopting the query interface for real tasks rather than just test cases, capture their feedback on where it does and does not replace existing routes, and report the improvement achieved against the manual reconciliation baseline.",
+          "outcome": "Pilot adoption evidenced with measured improvement reported against baseline."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "CU3.4a/CU3.4b",
+          "activity": "Establish the semantic layer as the routine route for cross-system data access as self-service access extends to all users, measuring reuse and the reduction in manual reconciliation against the baseline. Investigate where users continue to rely on manual routes and address the underlying causes (e.g. gaps in coverage, quality concerns, performance, or lack of confidence in results).",
+          "outcome": "Semantic layer in routine use with reconciliation reduced to exception cases; reasons for continued manual working identified and addressed."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "CU3.5a",
+          "activity": "Retire manual reconciliation processes and establish the semantic layer as the sole approved route for cross-system data access.",
+          "outcome": "Manual reconciliation processes formally retired."
+        }
+      ],
+      "6": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "CU4.2a",
+          "activity": "Establish an open, safe route for raising data errors, terminology conflicts and semantic inconsistencies, communicating that reporting is expected and welcomed, so the assessments and registers produced reflect the true state of systems and data.",
+          "outcome": "Open, safe error-reporting route established ahead of assessment activities."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "CU4.3a",
+          "activity": "Route ontology gaps and errors raised by users into ontology change control, and data quality issues into exception handling, demonstrating visibly to reporters that issues raised have been acted on.",
+          "outcome": "Reported issues routed into change control and quality handling, with resolution visible to reporters."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "CU4.4a",
+          "activity": "Review reporting and resolution rates on a defined frequency, treating low reporting in any area as a signal to investigate rather than as evidence of few problems.",
+          "outcome": "Reporting and resolution reviewed with under-reporting investigated."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "CU4.5a",
+          "activity": "Agree routes with external federation partners for raising and resolving data and semantic issues across organisational boundaries, including how issues in partner data are escalated and tracked.",
+          "outcome": "Cross-organisational error reporting and resolution operating with partners."
+        }
+      ],
+      "7": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "CU5.2a",
+          "activity": "Build awareness among teams that new data, systems and integrations should be expressed in shared terms from the outset, using the pain-point evidence to show the cost of not doing so.",
+          "outcome": "Teams aware that new work should start from shared meaning, with the cost of ad hoc approaches understood."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "CU5.3a",
+          "activity": "Establish the habit of consulting the published glossary and ontology when scoping new work, so teams check for existing shared terms before creating their own.",
+          "outcome": "Teams routinely consult the glossary and ontology when scoping new work."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "CU5.4a",
+          "activity": "Normalise teams raising the interoperability and semantic implications of their own work without being prompted and feeding back new concepts for inclusion rather than modelling them locally.",
+          "outcome": "Teams raise semantic implications proactively and contribute new concepts back to the shared model."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "CU5.5a",
+          "activity": "Embed ontology-first thinking as a shared value across internal teams and extend it to how the organisation works with partners, so semantic compatibility is a normal consideration in joint work rather than an imposed requirement.",
+          "outcome": "Ontology-first thinking embedded internally and shared with partners as normal way of working."
+        }
+      ]
+    },
+    "strategic_governance": {
+      "1": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "SG1.2a/SG1.2b",
+          "activity": "Identify the governance, risk and regulatory requirements that apply to data sharing, including data protection, commercial confidentiality, intellectual property and contractual obligations, and record them as a data sharing risk register. Identify and record the policy areas that will require definition, covering access, usage, provenance, retention and deletion, data classification and sensitivity, data quality obligations, sovereignty, and authority over automated governance.",
+          "outcome": "Data sharing risk register identifying governance and regulatory requirements; policy scope documented across the areas governing federated data."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "SG1.3a/SG1.3b/SG1.3c",
+          "activity": "Define how data is classified by sensitivity and define access and usage control policies for data exposed through the semantic layer at the intra-organisational level, specifying who may access what, for what purpose and under what conditions. Establish provenance requirements for data exposed through the semantic layer, specifying what origin and transformation information must be recorded and available when data is queried. Define retention and deletion policy for federated data, including how deletion in a source system propagates to any data materialised or cached in the semantic layer.",
+          "outcome": "Data classification and intra-organisational access and usage policies defined and enforceable; provenance requirements and retention/deletion policy defined for federated data."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "SG1.4a",
+          "activity": "Extend classification, access, usage, provenance and retention policies to all internal systems and domains as federation coverage widens, and enforce them through the semantic layer and connectors.",
+          "outcome": "Data-sharing policies enforced across all internal systems."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "SG1.5a",
+          "activity": "Operate and review the data sharing policies across internal and external federation against a defined governance performance measure, iterating them as partners, regulation and risk change.",
+          "outcome": "Data sharing policies operating and reviewed across internal and external sharing."
+        }
+      ],
+      "2": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "SG2.2a-new (proposed)",
+          "activity": "Leadership establishes an initial position on whether and how the organisation intends to federate externally — a strategic stance on sovereignty and partner trust set ahead of, and independently of, technical execution. Proposed new activity, not yet in the roadmap — pending reconciliation.",
+          "outcome": "Initial leadership position on external federation sovereignty and trust established (top-down route)."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "SG2.3a",
+          "activity": "Establish which contractual instruments govern data sharing with partners and define the data sovereignty principles they must contain, covering what control is retained over shared data and what receiving parties may and may not do with it.",
+          "outcome": "Data sovereignty principles defined and the contractual instruments to enact them identified."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "SG2.4a/SG2.4b",
+          "activity": "Specify the technical usage control and sovereignty mechanisms required for external federation, including attribute-based access control, usage policy enforcement and the provenance and logging needed to detect and evidence misuse. Define the trust and assurance requirements for federation partners, including what a partner must demonstrate about its own governance, security and data handling before federation is permitted.",
+          "outcome": "Usage control and sovereignty mechanisms specified for external federation; partner trust and assurance requirements defined."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "SG2.5a/SG2.5b",
+          "activity": "Establish the data space governance framework with partners and agree the rules of participation, define provider and consumer responsibilities and broker the agreements that admit each partner and bind them to the sovereignty and usage policies. Operate sovereignty and usage control across live external federation, enforcing usage policies before data is transferred, monitoring for policy violations and acting on breaches.",
+          "outcome": "Data space governance framework established with partner agreements in place; sovereignty and usage control operating and enforced across live external federation."
+        }
+      ],
+      "3": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "SG3.2a",
+          "activity": "Conduct a security threat assessment for internal data sharing, identifying insider threats, data leakage and integrity risks that exist before any external federation and record required controls in the risk register.",
+          "outcome": "Internal security threat assessment completed with controls identified."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "SG3.3a/SG3.3b",
+          "activity": "Require authentication and access enforcement for the semantic layer and query interface and assure that the access and classification policies defined in the Policy and Risk workstream are applied at the point of query. Establish the technical automation governance framework, defining who may change the automated identifier, metadata, lineage, provenance and quality rules, what approval and audit trail each change requires and how automated enforcement is monitored.",
+          "outcome": "Access enforcement requirements defined and assured against policy for internal federation; technical automation governance framework operational with change authority and audit defined."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "SG3.4a/SG3.4b",
+          "activity": "Extend access enforcement and monitoring requirements to all internal systems and assure that unauthorised access and policy violations are detected across the scope of internal federation. Define the security and assurance requirements for external federation ahead of partner connection, including how partner side threats are assessed and how breaches involving shared data are detected and responded to.",
+          "outcome": "Access enforcement and monitoring assured across all internal systems; external security and assurance requirements defined ahead of federation."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "SG3.5a",
+          "activity": "Assure continuous security monitoring across internal and external federation, reviewing threats, access anomalies and automation performance on a defined cadence and updating controls as the threat landscape and partner set change.",
+          "outcome": "Continuous security assurance operating across federation."
+        }
+      ],
+      "4": [
+        {
+          "fromLevel": 1,
+          "toLevel": 2,
+          "activityId": "SG4.2a-new (proposed)",
+          "activity": "Leadership formally recognises interoperability as a strategic priority and commissions an assessment or roadmap (such as this self-assessment) to establish current maturity and future direction. Proposed new activity, not yet in the roadmap — pending reconciliation.",
+          "outcome": "Interoperability formally recognised as a strategic priority, with an assessment or roadmap commissioned (top-down route)."
+        },
+        {
+          "fromLevel": 2,
+          "toLevel": 3,
+          "activityId": "SG4.3a/SG4.3b",
+          "activity": "Ratify the ontology-first strategy as the organisation's approach to interoperability, committing to standards-aligned ontologies and federated access over point-to-point integration. Require interoperability and semantic compatibility to be considered when new systems and projects are scoped, referencing the selected reference standards and priority domain scope.",
+          "outcome": "Ontology-first strategy formally adopted; interoperability requirements embedded in project scoping."
+        },
+        {
+          "fromLevel": 3,
+          "toLevel": 4,
+          "activityId": "SG4.4a/SG4.4b",
+          "activity": "Require an assessment of semantic and interoperability impact before new systems are approved or procured, with semantic compatibility as a selection criterion. Decide which partners to federate with and in what sequence, applying the partner trust, assurance and security requirements defined in the sovereignty and security workstreams and assessing partner semantic capability and the mapping effort required.",
+          "outcome": "Semantic impact assessment embedded in approval and procurement; federation partners determined and prioritised against defined criteria."
+        },
+        {
+          "fromLevel": 4,
+          "toLevel": 5,
+          "activityId": "SG4.5a",
+          "activity": "Review the interoperability strategy on a defined frequency against realised benefit and the evolving partner and standards landscape and direct the next cycle of improvement.",
+          "outcome": "Interoperability strategy reviewed and next cycle directed."
+        }
+      ]
+    }
+  }
+}
