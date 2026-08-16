@@ -15,7 +15,7 @@ stands in for the two Azure Functions described in the brief.
 
 ```
 npm install
-npm run dev:all     # starts both, proxied together at http://localhost:5173
+npm run dev:all     # starts both, proxied together at http://localhost:5173/semantic-interoperability/
 ```
 
 Or run them separately (`npm run dev`, `npm run server`) if you want to watch
@@ -50,10 +50,11 @@ completing the flow once.
   actually sending. See `server/index.js`. Swapping in the real Function
   app later is a matter of setting `VITE_API_BASE` at build time (see
   `src/lib/api.ts`) — no frontend logic changes.
-- **Code is pushed to `https://github.com/amc-dats/semantic-interoperability`**
-  (a new, separate repo, not `data-lineage`), but GitHub Pages itself isn't
-  set up yet — no deploy workflow exists there. That's still the next step
-  (see "Next steps toward the real thing" below).
+- **Live on GitHub Pages** at `https://amc-dats.github.io/semantic-interoperability/`
+  (repo: `https://github.com/amc-dats/semantic-interoperability`, deploy
+  workflow copied from `data-lineage` — see "Git / repo state" below). The
+  frontend works there; the backend calls don't yet, since there's no real
+  Azure Function deployed for this app — see "Next steps."
 
 ## Second pass — what changed
 
@@ -224,21 +225,34 @@ generated files.
   (`amc-dats`, authenticated via `gh`) used for the Azure resources.
 - `origin` remote is `https://github.com/amc-dats/semantic-interoperability`
   (public, for GitHub Pages Free-plan hosting, same as `data-lineage`),
-  created for this app specifically, and the code is pushed there.
-  GitHub Pages itself isn't configured yet — see next steps.
+  default branch `main` (renamed from git's `master` default to match
+  `data-lineage`'s trigger branch), code pushed there.
+- `.github/workflows/deploy-pages.yml` is the exact workflow copied from
+  `data-lineage` (build with `npm ci && npm run build`, deploy via
+  `actions/deploy-pages`) — pushes to `main` trigger it automatically.
+  `vite.config.ts` sets `base: '/semantic-interoperability/'` to match, same
+  pattern as `data-lineage`'s `base: '/data-lineage/'`. Note this also
+  changes the **local** dev URL to
+  `http://localhost:5173/semantic-interoperability/` (not just the
+  production build) — `data-lineage` does the same, `base` isn't
+  conditioned on dev vs. build.
+- Once this first workflow run completes, the live site will be at
+  `https://amc-dats.github.io/semantic-interoperability/` — same pattern as
+  `https://amc-dats.github.io/data-lineage/`. **The backend calls
+  (submit-assessment, send-results) will fail there** until the real Azure
+  Function is stood up and `VITE_API_BASE` is set at build time (see next
+  steps) — the frontend itself will work and results still render locally
+  in the browser even if the save silently fails, but nothing is actually
+  persisted yet from that live URL.
 
 ## Next steps toward the real thing
 
 1. Stand up the real Azure Function endpoints against the provisioned
    `Interoperability-results` app and `semanticinteroperability` storage
    account, matching the contract `server/index.js` already models.
-2. Add a `.github/workflows/deploy-pages.yml`, following the pattern in the
-   `data-lineage` repo, and set `vite.config.ts`'s `base` to
-   `/semantic-interoperability/` (or a custom domain, if one gets set up)
-   to match the Pages subpath. Set `VITE_API_BASE` to the deployed Function
-   App URL at build time, and `VITE_VIDEO_URL` to the blob URL already in
-   `.env.local` (that file itself isn't committed, so the deploy build
-   needs the variable set some other way — a repo/CI variable, not a
-   secret, since the video is public).
-3. Add the Function App's CORS entry for the GitHub Pages origin once it
-   exists.
+2. Set `VITE_API_BASE` (deployed Function App URL) and `VITE_VIDEO_URL`
+   (already in local `.env.local`, but that file isn't committed) as
+   repo/CI build variables so the GitHub Actions build picks them up —
+   neither needs to be a secret, both are public URLs.
+3. Add the Function App's CORS entry for the GitHub Pages origin
+   (`https://amc-dats.github.io`) once it exists.
