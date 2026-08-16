@@ -27,6 +27,11 @@ export function submitAssessment(
 export function sendResultsEmail(
   email: string,
   payload: SubmissionPayload,
+  resultsHtml: string,
 ): Promise<{ ok: true }> {
-  return postJson("/api/send-results", { email, payload });
+  // resultsHtml is a pre-rendered summary (score table + immediate actions)
+  // for the Function App to embed in the email -- it has no access to the
+  // question/roadmap data needed to compute that itself, only the frontend
+  // does. Transient, not part of the stored payload.
+  return postJson("/api/send-results", { email, payload, resultsHtml });
 }

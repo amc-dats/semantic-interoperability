@@ -16,6 +16,7 @@ import type {
 import { DIMENSION_ORDER, EMPTY_BUSINESS_CONTEXT, EMPTY_VALIDATION } from "./types";
 import { computeScores } from "./lib/scoring";
 import { submitAssessment, sendResultsEmail } from "./lib/api";
+import { renderImmediateActionsHtml, renderScoreSummaryHtml } from "./lib/emailSummary";
 
 import { IntroScreen } from "./components/IntroScreen";
 import { VideoScreen } from "./components/VideoScreen";
@@ -120,7 +121,10 @@ export default function App() {
   };
 
   const handleSendEmail = async (email: string) => {
-    await sendResultsEmail(email, buildPayload(false));
+    const resultsHtml =
+      renderScoreSummaryHtml(dimensions, scores, targets) +
+      renderImmediateActionsHtml(dimensions, answers, targets, roadmapData);
+    await sendResultsEmail(email, buildPayload(false), resultsHtml);
     setStage("validation");
   };
 

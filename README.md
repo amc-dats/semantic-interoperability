@@ -42,19 +42,24 @@ completing the flow once.
   App URL gets set for deployment, `VITE_VIDEO_URL` will need setting again
   wherever that build happens (CI secret/variable, not just this local
   `.env.local`).
-- **The backend is a local mock**, not the real Azure Function app. It
-  implements the same two endpoints (`POST /api/submit-assessment`,
-  `POST /api/send-results`) with the same contract (email is received, used,
-  and never persisted), but stores to a local JSON file instead of Azure
-  Table Storage, and only logs what it would send via SendGrid instead of
-  actually sending. See `server/index.js`. Swapping in the real Function
-  app later is a matter of setting `VITE_API_BASE` at build time (see
-  `src/lib/api.ts`) — no frontend logic changes.
+- **The real backend is live.** The deployed site's `VITE_API_BASE` repo
+  variable points at the actual `interoperability-results` Function App
+  (`https://interoperability-results-d4cha8e5d8dufnaa.swedencentral-01.azurewebsites.net`
+  — code in a separate repo, `https://github.com/amc-dats/interoperability-results`),
+  which really does save submissions to Azure Table Storage. **Except
+  email** — `send-results` is deployed and code-complete but returns `503`
+  until a SendGrid account exists and `SENDGRID_API_KEY`/`SENDGRID_FROM_EMAIL`
+  are set as Function App settings; see that repo's README. **Local dev
+  still uses the mock backend** (`server/index.js`) by default — same two
+  endpoints, same contract, but a local JSON file instead of Table Storage
+  and just logs what it would send instead of actually emailing — so local
+  iteration can't accidentally write real data or send real email. Set
+  `VITE_API_BASE` in `.env.local` if you want local dev to hit the real
+  backend instead (CORS already allows `http://localhost:5173`).
 - **Live on GitHub Pages** at `https://amc-dats.github.io/semantic-interoperability/`
   (repo: `https://github.com/amc-dats/semantic-interoperability`, deploy
-  workflow copied from `data-lineage` — see "Git / repo state" below). The
-  frontend works there; the backend calls don't yet, since there's no real
-  Azure Function deployed for this app — see "Next steps."
+  workflow copied from `data-lineage` — see "Git / repo state" below), now
+  wired to the real backend above.
 
 ## Second pass — what changed
 
@@ -247,12 +252,18 @@ generated files.
 
 ## Next steps toward the real thing
 
-1. Stand up the real Azure Function endpoints against the provisioned
-   `Interoperability-results` app and `semanticinteroperability` storage
-   account, matching the contract `server/index.js` already models.
-2. Set `VITE_API_BASE` (deployed Function App URL) and `VITE_VIDEO_URL`
-   (already in local `.env.local`, but that file isn't committed) as
-   repo/CI build variables so the GitHub Actions build picks them up —
-   neither needs to be a secret, both are public URLs.
-3. Add the Function App's CORS entry for the GitHub Pages origin
-   (`https://amc-dats.github.io`) once it exists.
+1. ~~Stand up the real Azure Function endpoints~~ — done, see
+   `amc-dats/interoperability-results`.
+2. ~~Set `VITE_API_BASE` and `VITE_VIDEO_URL` as repo/CI build
+   variables~~ — done.
+3. ~~Add the Function App's CORS entry for the GitHub Pages origin~~ —
+   done (`https://amc-dats.github.io`, plus `http://localhost:5173` for
+   testing the real backend from local dev).
+4. **Sign up for SendGrid** (free tier), verify a sender address, and set
+   `SENDGRID_API_KEY` / `SENDGRID_FROM_EMAIL` as Function App settings —
+   the one remaining gap. `send-results` is deployed and code-complete,
+   just returns `503` until these exist.
+5. Consider a CI/CD pipeline for the Function App (it's manual `az
+   functionapp deploy` right now) — would need an Azure AD app
+   registration with federated credentials or a publish-profile secret,
+   which is a real addition to the tenant worth agreeing on first.

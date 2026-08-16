@@ -62,12 +62,16 @@ app.post("/api/submit-assessment", async (req, res) => {
 });
 
 app.post("/api/send-results", async (req, res) => {
-  const { email, payload } = req.body ?? {};
+  const { email, payload, resultsHtml } = req.body ?? {};
   if (!email || typeof email !== "string") {
     return res.status(400).json({ ok: false, error: "Missing email address" });
   }
 
-  const html = renderResultsEmailHtml(payload);
+  // The real Function App just wraps resultsHtml (pre-rendered by the
+  // frontend -- see src/lib/emailSummary.ts) in its email shell. Mirror
+  // that here when present so the local preview matches production; fall
+  // back to the old simple table if an older client doesn't send it.
+  const html = resultsHtml ?? renderResultsEmailHtml(payload);
 
   // In production this calls the SendGrid API. Locally we just log what would
   // have been sent, then let `email` fall out of scope — it is never persisted.
