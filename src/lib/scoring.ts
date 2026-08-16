@@ -6,7 +6,6 @@ import type {
   RoadmapData,
   RoadmapEntry,
   Scores,
-  WordingVariant,
 } from "../types";
 
 // Standard maturity bands (brief section 5)
@@ -76,11 +75,11 @@ export function computeScores(
   return { byDimension, overall: total / dimensions.length };
 }
 
-export interface QuestionActionGroup {
-  questionNumber: number;
-  questionText: string;
-  currentLevel: Level;
-  activities: RoadmapEntry[];
+export interface SortedActivity extends RoadmapEntry {
+  // activityId with the 2-letter dimension prefix stripped for display,
+  // e.g. "TE1.2b" -> "1.2b" (already shown under the "Technical" heading,
+  // so repeating the abbreviation there is redundant).
+  displayId: string;
 }
 
 export interface ImmediateActions {
@@ -88,21 +87,61 @@ export interface ImmediateActions {
   noActionNeeded: boolean;
   currentStage: Level;
   targetLevel: Level;
-  questionGroups: QuestionActionGroup[];
+  activities: SortedActivity[];
+}
+
+function stripDimensionPrefix(activityId: string): string {
+  return activityId
+    .split("/")
+    .map((seg) => seg.trim().replace(/^[A-Za-z]+/, ""))
+    .join("/");
+}
+
+// Sort key: workstream number, then level, then item letter -- e.g.
+// "TE1.2b" < "TE2.2a" < "TE2.2b" < "TE2.2c" < "TE3.2a", matching how the
+// workstreams themselves are numbered rather than the order questions
+// happen to appear in.
+function activitySortKey(activityId: string): [number, number, string] {
+  const first = activityId.split("/")[0].trim();
+  const m = first.match(/^[A-Za-z]*(\d+)\.(\d+)([A-Za-z]*)$/);
+  if (!m) return [Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER, activityId];
+  return [Number(m[1]), Number(m[2]), m[3]];
+}
+
+function compareActivities(a: RoadmapEntry, b: RoadmapEntry): number {
+  const [aw, al, ai] = activitySortKey(a.activityId ?? "");
+  const [bw, bl, bi] = activitySortKey(b.activityId ?? "");
+  if (aw !== bw) return aw - bw;
+  if (al !== bl) return al - bl;
+  return ai.localeCompare(bi);
 }
 
 /**
- * The overall-score cap (brief section 5): while the respondent's overall
- * score is still below 2, every dimension's immediate actions are pulled
- * only up to Level 3, even if a dimension's own short-term target is set
- * higher — the priority while still early-stage is the Level-3 baseline
- * everywhere, not any one dimension's more ambitious goal. Above an overall
- * score of 2, each dimension's actual short-term target applies uncapped.
- * This affects only which actions are pulled, never the chart, which always
- * plots the respondent's actual chosen targets.
+ * The Level-3 progression gate: no dimension may advance beyond Level 3
+ * until *every* dimension has reached at least Level 3 -- this is the
+ * framework's own stated rule (see the goal-setting note shown during the
+ * assessment, and the roadmap workbook's Instructions sheet: "Level 3 ...
+ * is the minimum level of maturity required ... across all dimensions").
  */
-export function getEffectiveTargetLevel(shortTermTarget: Level, overallScore: number): Level {
-  return overallScore < 2 ? (Math.min(shortTermTarget, 3) as Level) : shortTermTarget;
+export function allDimensionsReachedLevel3(
+  dimensions: Dimension[],
+  answers: AssessmentAnswers,
+): boolean {
+  return dimensions.every((d) => roundedLevel(dimensionAverage(d, answers) ?? 1) >= 3);
+}
+
+/**
+ * Applies the Level-3 progression gate to one dimension's target: while
+ * `gated` is true, immediate actions are pulled only up to Level 3, even if
+ * this dimension's own short-term target is set higher -- the priority
+ * before every dimension has cleared the Level 3 baseline is getting there
+ * everywhere, not any one dimension's more ambitious goal. Once every
+ * dimension has reached Level 3, each dimension's actual short-term target
+ * applies uncapped. This affects only which actions are pulled, never the
+ * chart, which always plots the respondent's actual chosen targets.
+ */
+export function getEffectiveTargetLevel(shortTermTarget: Level, gated: boolean): Level {
+  return gated ? (Math.min(shortTermTarget, 3) as Level) : shortTermTarget;
 }
 
 /**
@@ -112,9 +151,13 @@ export function getEffectiveTargetLevel(shortTermTarget: Level, overallScore: nu
  * overall-score-capped version — see getEffectiveTargetLevel).
  *
  * Computed per-question (using each question's own level) so a question that
- * has already reached the target isn't given redundant lower-level actions.
- * Entries with no real activity to surface (internal-only "no roadmap
- * activity" / "Blocked: ..." sequencing notes) were already filtered out at
+ * has already reached the target isn't given redundant lower-level actions,
+ * but the result is a single flat list for the dimension, sorted by
+ * workstream/level/item (e.g. 1.2b, 2.2a, 2.2b, 2.2c, 3.2a...) rather than
+ * grouped by question -- the question text itself was already shown during
+ * the assessment and repeating it here just makes the panel long. Entries
+ * with no real activity to surface (internal-only "no roadmap activity" /
+ * "Blocked: ..." sequencing notes) were already filtered out at
  * data-extraction time, so nothing further needs suppressing here.
  */
 export function getImmediateActions(
@@ -122,7 +165,6 @@ export function getImmediateActions(
   answers: AssessmentAnswers,
   targetLevel: Level,
   roadmap: RoadmapData,
-  wordingVariant: WordingVariant,
 ): ImmediateActions {
   const avg = dimensionAverage(dimension, answers) ?? 1;
   const currentStage = roundedLevel(avg);
@@ -133,36 +175,33 @@ export function getImmediateActions(
       noActionNeeded: true,
       currentStage,
       targetLevel,
-      questionGroups: [],
+      activities: [],
     };
   }
 
   const dimRoadmap = roadmap.dimensions[dimension.id] ?? {};
-  const questionGroups: QuestionActionGroup[] = [];
+  const activities: SortedActivity[] = [];
 
   for (const q of dimension.questions) {
     const qLevel = (answers[q.id] ?? currentStage) as Level;
     if (qLevel >= targetLevel) continue;
 
-    const entries = (dimRoadmap[String(q.number)] ?? [])
-      .filter((e) => e.fromLevel >= qLevel && e.fromLevel < targetLevel)
-      .sort((a, b) => a.fromLevel - b.fromLevel);
+    const entries = (dimRoadmap[String(q.number)] ?? []).filter(
+      (e) => e.fromLevel >= qLevel && e.fromLevel < targetLevel,
+    );
 
-    if (entries.length > 0) {
-      questionGroups.push({
-        questionNumber: q.number,
-        questionText: q.text[wordingVariant],
-        currentLevel: qLevel,
-        activities: entries,
-      });
+    for (const e of entries) {
+      activities.push({ ...e, displayId: stripDimensionPrefix(e.activityId ?? "") });
     }
   }
+
+  activities.sort(compareActivities);
 
   return {
     dimensionId: dimension.id,
     noActionNeeded: false,
     currentStage,
     targetLevel,
-    questionGroups,
+    activities,
   };
 }

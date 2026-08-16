@@ -176,7 +176,6 @@ export default function App() {
             targets={targets}
             scores={scores}
             roadmap={roadmapData}
-            wordingVariant={wordingVariant}
             onContinue={() => setStage("email")}
           />
         </>

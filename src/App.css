@@ -373,32 +373,6 @@ textarea {
   white-space: nowrap;
 }
 
-table.summary-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-  margin-top: 20px;
-}
-
-table.summary-table th,
-table.summary-table td {
-  text-align: left;
-  padding: 10px 8px;
-  border-bottom: 1px solid var(--border);
-}
-
-table.summary-table th {
-  color: var(--text-muted);
-  font-weight: 600;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
-table.summary-table td.num {
-  font-variant-numeric: tabular-nums;
-}
-
 .actions-panel {
   margin-top: 12px;
 }
@@ -407,17 +381,6 @@ table.summary-table td.num {
   color: var(--text-secondary);
   font-size: 0.88rem;
   font-style: italic;
-}
-
-.action-question {
-  margin-top: 14px;
-}
-
-.action-question-title {
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 6px;
 }
 
 .action-item {

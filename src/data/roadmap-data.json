@@ -228,7 +228,7 @@
         {
           "fromLevel": 2,
           "toLevel": 3,
-          "activityId": "SE1.2c/d/e",
+          "activityId": "SE1.2c/SE1.2d/SE1.2e",
           "activity": "Identify and evaluate published ontologies, reference standards and classification systems relevant to priority domains and competency questions (e.g. IOF-Core, ISA-95, AAS, ECLASS, IEC CDD). Select and formally adopt reference standards, documenting organisation-specific gaps requiring local development. Select a top-level ontology (e.g. BFO/ISO 21838-2) to provide the domain-neutral upper structure.",
           "outcome": "Reference standards adopted for priority domains; top-level ontology selected and rationale documented."
         },
@@ -274,7 +274,7 @@
         {
           "fromLevel": 3,
           "toLevel": 4,
-          "activityId": "SE2.3b/c",
+          "activityId": "SE2.3b/SE2.3c",
           "activity": "Develop application ontologies for the priority use cases, built on the domain ontology. Validate the ontologies against the identified competency questions, documenting which questions are answered correctly and correcting any coverage gaps.",
           "outcome": "Application ontologies published for priority use cases; competency question test results documented with coverage gaps corrected."
         },
@@ -350,14 +350,14 @@
         {
           "fromLevel": 2,
           "toLevel": 3,
-          "activityId": "SE3.3b/c",
+          "activityId": "SE3.3b/SE3.3c",
           "activity": "Resolve entity duplication across mapped systems, defining matching rules to determine when records in different systems refer to the same real-world entity. Validate that queries expressed in ontology terms translate correctly against mapped sources, testing against competency questions.",
           "outcome": "Entity resolution rules defined and applied; query translation validated against competency questions for priority domains."
         },
         {
           "fromLevel": 3,
           "toLevel": 4,
-          "activityId": "SE3.4b/c",
+          "activityId": "SE3.4b/SE3.4c",
           "activity": "Establish mapping maintenance, detecting when source schema changes invalidate existing mappings and defining the route for correction. Pilot automated mapping generation on a subset of systems, comparing against manually developed mappings to establish accuracy and validation requirements.",
           "outcome": "Schema change detection operational with mappings maintained; automated mapping generation piloted with accuracy and validation requirements established."
         },
@@ -435,7 +435,7 @@
         {
           "fromLevel": 3,
           "toLevel": 4,
-          "activityId": "SE4.4c/d",
+          "activityId": "SE4.4c/SE4.4d",
           "activity": "Monitor federated query performance, reliability and optimise how queries are decomposed and routed across systems. Enable logic and reasoning at query time so that relationships defined in the ontology are applied when queries are run, returning results that are implied by the ontology but not explicitly stated in any source system.",
           "outcome": "Federated query performance monitored and optimised; query-time reasoning operational across federated sources."
         },
@@ -460,15 +460,15 @@
         {
           "fromLevel": 2,
           "toLevel": 3,
-          "activityId": "OR1.3a-new (proposed)",
-          "activity": "Formally document the accountability remit (e.g. a charter or terms of reference) and communicate it across the organisation, so the assignment is known beyond the individual holding it. Proposed new activity, not yet in the roadmap — pending reconciliation.",
+          "activityId": "OR1.3a",
+          "activity": "Formally document the accountability remit (e.g. a charter or terms of reference) and communicate it across the organisation, so the assignment is known beyond the individual holding it.",
           "outcome": "Accountability formally documented, communicated and understood across the organisation."
         },
         {
           "fromLevel": 3,
           "toLevel": 4,
-          "activityId": "OR1.4a-new (proposed)",
-          "activity": "Embed accountability into a governance cadence — the owner participates in scheduled decision points, reviews and conflict resolution rather than holding the title without exercising it. Proposed new activity, not yet in the roadmap — pending reconciliation.",
+          "activityId": "OR1.4a",
+          "activity": "Embed accountability into a governance cadence — the owner participates in scheduled decision points, reviews and conflict resolution rather than holding the title without exercising it.",
           "outcome": "Accountability actively exercised through a defined governance cadence, not titular."
         },
         {
@@ -483,8 +483,8 @@
         {
           "fromLevel": 1,
           "toLevel": 2,
-          "activityId": "OR1.2b-revised (proposed)",
-          "activity": "Identify and record the accountable owner for each priority data domain. Revised from the roadmap's system-level wording to domain level — pending reconciliation.",
+          "activityId": "OR1.2b",
+          "activity": "Identify and record the accountable owner for each priority data domain. ",
           "outcome": "Data ownership recorded for priority data domains."
         },
         {
@@ -497,15 +497,15 @@
         {
           "fromLevel": 3,
           "toLevel": 4,
-          "activityId": "OR1.4a-revised (proposed)",
-          "activity": "Extend domain ownership recording to all remaining data domains. Revised from the roadmap's system-level wording to domain level — pending reconciliation.",
+          "activityId": "OR1.4a",
+          "activity": "Extend domain ownership recording to all remaining data domains. ",
           "outcome": "Domain ownership recorded across all domains."
         },
         {
           "fromLevel": 4,
           "toLevel": 5,
-          "activityId": "OR1.6a-new (proposed)",
-          "activity": "Ownership records are actively reviewed and maintained as domains are added, merged, split or redefined. Proposed new activity, not yet in the roadmap — pending reconciliation.",
+          "activityId": "OR1.6a",
+          "activity": "Ownership records are actively reviewed and maintained as domains are added, merged, split or redefined.",
           "outcome": "Ownership governance actively maintained as the domain model evolves."
         }
       ],
@@ -513,15 +513,15 @@
         {
           "fromLevel": 1,
           "toLevel": 2,
-          "activityId": "OR1.2c-new (proposed)",
-          "activity": "Determine the appropriate steward granularity for the organisation (system, dataset or sub-domain) based on complexity, rather than assuming a fixed unit. Proposed new activity, not yet in the roadmap — pending reconciliation.",
+          "activityId": "OR1.2c",
+          "activity": "Determine the appropriate steward granularity for the organisation (system, dataset or sub-domain) based on complexity, rather than assuming a fixed unit.",
           "outcome": "Stewardship granularity model defined, appropriate to organisational complexity."
         },
         {
           "fromLevel": 2,
           "toLevel": 3,
-          "activityId": "OR1.3a-revised (proposed)",
-          "activity": "Designate stewards at the determined granularity within each priority domain, with a defined remit covering quality rule definition, exception handling, ontology change assessment and terminology decisions, and confirm they have the authority and capacity to exercise it. Revised from the roadmap's domain-only wording — pending reconciliation.",
+          "activityId": "OR1.3a",
+          "activity": "Designate stewards at the determined granularity within each priority domain, with a defined remit covering quality rule definition, exception handling, ontology change assessment and terminology decisions, and confirm they have the authority and capacity to exercise it.",
           "outcome": "Stewards designated at appropriate granularity for priority domains, with documented remit and authority."
         },
         {
@@ -856,8 +856,8 @@
         {
           "fromLevel": 1,
           "toLevel": 2,
-          "activityId": "SG2.2a-new (proposed)",
-          "activity": "Leadership establishes an initial position on whether and how the organisation intends to federate externally — a strategic stance on sovereignty and partner trust set ahead of, and independently of, technical execution. Proposed new activity, not yet in the roadmap — pending reconciliation.",
+          "activityId": "SG2.2a",
+          "activity": "Leadership establishes an initial position on whether and how the organisation intends to federate externally — a strategic stance on sovereignty and partner trust set ahead of, and independently of, technical execution. ",
           "outcome": "Initial leadership position on external federation sovereignty and trust established (top-down route)."
         },
         {
@@ -916,8 +916,8 @@
         {
           "fromLevel": 1,
           "toLevel": 2,
-          "activityId": "SG4.2a-new (proposed)",
-          "activity": "Leadership formally recognises interoperability as a strategic priority and commissions an assessment or roadmap (such as this self-assessment) to establish current maturity and future direction. Proposed new activity, not yet in the roadmap — pending reconciliation.",
+          "activityId": "SG4.2a",
+          "activity": "Leadership formally recognises interoperability as a strategic priority and commissions an assessment or roadmap (such as this self-assessment) to establish current maturity and future direction. ",
           "outcome": "Interoperability formally recognised as a strategic priority, with an assessment or roadmap commissioned (top-down route)."
         },
         {

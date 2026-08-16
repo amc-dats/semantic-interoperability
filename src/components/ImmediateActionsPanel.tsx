@@ -1,66 +1,59 @@
-import { getEffectiveTargetLevel, getImmediateActions, type QuestionActionGroup } from "../lib/scoring";
-import type { AssessmentAnswers, Dimension, RoadmapData, Scores, TargetsByDimension, WordingVariant } from "../types";
+import {
+  allDimensionsReachedLevel3,
+  getEffectiveTargetLevel,
+  getImmediateActions,
+  type SortedActivity,
+} from "../lib/scoring";
+import type { AssessmentAnswers, Dimension, RoadmapData, TargetsByDimension } from "../types";
 
 interface Props {
   dimensions: Dimension[]; // in fixed app order, Technical first
   answers: AssessmentAnswers;
   targets: TargetsByDimension;
-  scores: Scores;
   roadmap: RoadmapData;
-  wordingVariant: WordingVariant;
 }
 
-function QuestionGroups({ groups }: { groups: QuestionActionGroup[] }) {
+function ActivityList({ activities }: { activities: SortedActivity[] }) {
   return (
     <>
-      {groups.map((g) => (
-        <div className="action-question" key={g.questionNumber}>
-          <div className="action-question-title">
-            {g.questionNumber}. {g.questionText}
-          </div>
-          {g.activities.map((a) => (
-            <div className="action-item" key={`${g.questionNumber}-${a.fromLevel}`}>
-              <strong>{a.activityId ? `${a.activityId}: ` : ""}</strong>
-              {a.activity}
-              {a.outcome && <div className="outcome">Outcome: {a.outcome}</div>}
-            </div>
-          ))}
+      {activities.map((a, i) => (
+        // A handful of source activity IDs are (incorrectly) reused for
+        // genuinely different activities -- see the extraction script's
+        // duplicate-ID warning -- so displayId alone isn't a safe key.
+        <div className="action-item" key={`${i}-${a.displayId}`}>
+          <strong>{a.displayId}: </strong>
+          {a.activity}
+          {a.outcome && <div className="outcome">Outcome: {a.outcome}</div>}
         </div>
       ))}
     </>
   );
 }
 
-export function ImmediateActionsPanel({
-  dimensions,
-  answers,
-  targets,
-  scores,
-  roadmap,
-  wordingVariant,
-}: Props) {
-  const overallScore = scores.overall;
-  const capped = overallScore < 2;
+export function ImmediateActionsPanel({ dimensions, answers, targets, roadmap }: Props) {
+  const gated = !allDimensionsReachedLevel3(dimensions, answers);
 
   const technical = dimensions.find((d) => d.id === "technical");
   const others = dimensions.filter((d) => d.id !== "technical");
 
   const technicalTarget = technical
-    ? getEffectiveTargetLevel(targets.technical.shortTerm, overallScore)
+    ? getEffectiveTargetLevel(targets.technical.shortTerm, gated)
     : null;
   const technicalActions =
     technical && technicalTarget
-      ? getImmediateActions(technical, answers, technicalTarget, roadmap, wordingVariant)
+      ? getImmediateActions(technical, answers, technicalTarget, roadmap)
       : null;
 
   return (
     <div className="dimension-result">
       <h3>Immediate actions</h3>
 
-      {capped && (
+      {gated && (
         <p className="no-action-note" style={{ marginBottom: 16 }}>
-          Your overall maturity is still early-stage, so immediate actions below
-          focus on reaching the Level 3 baseline across all dimensions first.
+          Level 3 is the minimum baseline across all five dimensions, and no
+          dimension can progress further until every dimension reaches it —
+          so immediate actions below focus on reaching Level 3 everywhere
+          first.
         </p>
       )}
 
@@ -77,13 +70,13 @@ export function ImmediateActionsPanel({
             gap to target is addressed first, regardless of how it scores relative
             to the others.
           </p>
-          <QuestionGroups groups={technicalActions.questionGroups} />
+          <ActivityList activities={technicalActions.activities} />
         </div>
       )}
 
       {others.map((dim) => {
-        const effectiveTarget = getEffectiveTargetLevel(targets[dim.id].shortTerm, overallScore);
-        const actions = getImmediateActions(dim, answers, effectiveTarget, roadmap, wordingVariant);
+        const effectiveTarget = getEffectiveTargetLevel(targets[dim.id].shortTerm, gated);
+        const actions = getImmediateActions(dim, answers, effectiveTarget, roadmap);
         return (
           <div className="actions-panel" key={dim.id}>
             <div className="section-heading">{dim.name}</div>
@@ -92,12 +85,12 @@ export function ImmediateActionsPanel({
                 Target already met at the current stage — no immediate action
                 needed for this dimension.
               </p>
-            ) : actions.questionGroups.length === 0 ? (
+            ) : actions.activities.length === 0 ? (
               <p className="no-action-note">
                 No specific roadmap activities are catalogued for this gap yet.
               </p>
             ) : (
-              <QuestionGroups groups={actions.questionGroups} />
+              <ActivityList activities={actions.activities} />
             )}
           </div>
         );

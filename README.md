@@ -33,11 +33,15 @@ completing the flow once.
   `*_Maturity_Self_Assessment_PlainEnglish.xlsx` workbooks into
   `src/data/assessment-data.json` and `src/data/roadmap-data.json` (see
   "How the data was extracted" below). Nothing here is placeholder text.
-- **The video step is a placeholder.** No video file exists yet. The screen
-  shows a "video coming soon" note and a way to continue. Once the video is
-  exported and hosted on Azure Blob Storage, set `VITE_VIDEO_URL` (an env
-  var, e.g. in `.env.local`) to its URL and it will render in the `<video>`
-  player with zero code changes — see `src/components/VideoScreen.tsx`.
+- **The video is live.** Exported and hosted on Azure Blob Storage in the
+  `semanticinteroperability` account, public blob read access. `VITE_VIDEO_URL`
+  is set in `.env.local` (git-ignored — not committed, since it's
+  environment config, not app code) to the blob URL; if it's ever unset,
+  the screen falls back to a "video coming soon" placeholder rather than
+  breaking. See `src/components/VideoScreen.tsx`. When the real Function
+  App URL gets set for deployment, `VITE_VIDEO_URL` will need setting again
+  wherever that build happens (CI secret/variable, not just this local
+  `.env.local`).
 - **The backend is a local mock**, not the real Azure Function app. It
   implements the same two endpoints (`POST /api/submit-assessment`,
   `POST /api/send-results`) with the same contract (email is received, used,
@@ -46,13 +50,10 @@ completing the flow once.
   actually sending. See `server/index.js`. Swapping in the real Function
   app later is a matter of setting `VITE_API_BASE` at build time (see
   `src/lib/api.ts`) — no frontend logic changes.
-- **GitHub Pages deployment is not set up yet, but the repo now exists.**
-  `https://github.com/amc-dats/semantic-interoperability` — a new, separate
-  repo (not `data-lineage`), created empty. No code has been pushed to it
-  and no deploy workflow exists yet — per the brief, build and test locally
-  first, only push once approved. The local repo here has `origin` pointing
-  at it already (see "Git / repo state" below), so pushing is a `git push
-  -u origin master` away once you've reviewed and given the go-ahead.
+- **Code is pushed to `https://github.com/amc-dats/semantic-interoperability`**
+  (a new, separate repo, not `data-lineage`), but GitHub Pages itself isn't
+  set up yet — no deploy workflow exists there. That's still the next step
+  (see "Next steps toward the real thing" below).
 
 ## Second pass — what changed
 
@@ -103,18 +104,20 @@ This round:
   are confirmed, its answers can't be revisited in this session (there's no
   persistence to resume into anyway if the tab closes). Flagged in the first
   two passes for reconsideration; confirmed as final — not building it.
-- **Immediate actions are computed per-question, not per-dimension.** The
-  roadmap data in each workbook's `Activities` sheet is keyed by individual
-  question + "from level," not by dimension as a whole. So instead of
-  showing one blanket set of activities for "the dimension's" current stage,
-  the results screen shows, for each question that hasn't yet reached the
-  effective target, the specific activities that take *that question's own
-  current level* up to the target. This is more precise than a dimension-wide
-  average would allow (it won't tell someone who already scored 5 on one
-  question to do a level-1 activity) and uses exactly the data that exists.
-  The dimension-level "no action needed" check (effective target ≤ current
-  stage) still follows the brief exactly, as does the Technical-first
-  sequencing and the overall-score cap.
+- **Immediate actions are computed per-question, then flattened for
+  display.** The roadmap data in each workbook's `Activities` sheet is keyed
+  by individual question + "from level," not by dimension as a whole, so
+  for each question that hasn't yet reached the effective target, the
+  specific activities that take *that question's own current level* up to
+  the target are pulled individually. This is more precise than a
+  dimension-wide average would allow (it won't tell someone who already
+  scored 5 on one question to do a level-1 activity) and uses exactly the
+  data that exists. The results screen no longer groups these by question,
+  though (see "flat, sorted list" below) — it's purely how the underlying
+  activities are selected. The dimension-level "no action needed" check
+  (effective target ≤ current stage) still follows the brief exactly, as
+  does the Technical-first sequencing and the Level-3 progression gate (see
+  below — this replaced the brief's original overall-score cap).
 - **Regulatory environment as checkboxes, not a native multi-select.** The
   brief calls it a "multi-select dropdown." A native `<select multiple>`
   is poor mobile UX (no visible affordance, awkward ctrl/cmd-click). A
@@ -135,11 +138,56 @@ This round:
   onto the same row (mirrors Table Storage's insert-or-replace semantics).
 - **Combined-chart overlapping markers.** When a dimension's targets are left
   at their pre-filled default (equal to its current level — a common case),
-  the three points land on exactly the same spot. Rather than let the
-  later marker fully hide the earlier ones, each series uses a different
-  shape and a decreasing size (circle → square → diamond, largest to
-  smallest) so all three remain visible as concentric shapes even when
-  fully overlapping.
+  the three points land on exactly the same spot. Each series uses both a
+  different shape and a different size — Now (circle) smallest and drawn
+  last/on top, Short-term target (square) medium, Long-term target
+  (diamond) largest and drawn first/underneath — so a full overlap reads as
+  a clean bullseye (diamond corners visible at the outer edge, square ring
+  in the middle, circle at the centre) rather than one shape hiding the
+  rest. Per user feedback: Now is labelled directly above its point with
+  its numeric score (short/long-term targets aren't, since they're whole
+  numbers that already land exactly on a gridline); the old summary table
+  beneath the chart was removed as redundant once the chart carried this
+  much detail on its own. Colours: Now = amber/orange, Short-term target =
+  blue, Long-term target = green.
+- **Level-3 progression gate** (`allDimensionsReachedLevel3` in
+  `src/lib/scoring.ts`) **replaced the brief's original overall-score
+  cap.** The brief specified: if the respondent's *overall* average is
+  below 2, cap every dimension's pulled actions at Level 3. Per user
+  feedback, this is now a more precise, per-dimension check instead:
+  actions are capped at Level 3 for every dimension until *all five*
+  dimensions have individually reached Level 3 — matching the framework's
+  own stated rule (shown to the respondent as the goal-setting note: "no
+  dimension can progress beyond Level 3 until all five reach it"). The two
+  conditions aren't independent alternatives — the overall-average-below-2
+  case is always a subset of "not all dimensions have reached Level 3" (if
+  the average is under 2, at least one dimension must be below 3), so the
+  new check strictly subsumes the old one rather than adding a second,
+  separate rule alongside it.
+- **Immediate actions panel: flat, sorted list, no question repeats.** Per
+  user feedback, the panel no longer groups activities under each question
+  (with the question text repeated) — it shows one flat list per dimension,
+  sorted by workstream → level → item (`1.2b, 2.2a, 2.2b, 2.2c, 3.2a...`),
+  with the activity ID's dimension-abbreviation prefix stripped (redundant
+  under a dimension heading that already says "Technical"). See
+  `getImmediateActions` in `src/lib/scoring.ts`.
+- **Found and fixed a display bug in that same prefix-stripping**: source
+  combo IDs are sometimes abbreviated (`SE1.2c/d/e` rather than repeating
+  the full prefix on every part). Stripping each `/`-separated segment's
+  own leading letters independently wiped a bare continuation like `d` or
+  `e` to nothing, since the strip regex matched the *entire* segment —
+  producing a dangling slash on display (`1.2c//`, `3.3b/`). Fixed by
+  expanding every combo to its full form once, at extraction time
+  (`SE1.2c/d/e` → `SE1.2c/SE1.2d/SE1.2e`), so per-segment stripping
+  downstream is always safe.
+- **A few source activity IDs are reused across genuinely different
+  activities** (e.g. `OR1.3a` appears for both Q1 and Q3 in the
+  Organisational workbook, with different text) — confirmed with the user
+  this is an accepted quirk of the ID abbreviation scheme, not a bug to fix
+  in the source data or work around in the app. The flat activity list
+  handles it fine either way (React keys are index-based, not ID-based, so
+  a repeated label doesn't break rendering) — it just occasionally shows
+  the same short ID twice with different content.
 
 ## Structure
 
@@ -174,23 +222,23 @@ generated files.
 - Local git repo (`webapp/.git`), commit author `Ananda Mello Costa
   <a.mellocosta.729@cranfield.ac.uk>` — matches the GitHub account
   (`amc-dats`, authenticated via `gh`) used for the Azure resources.
-- `origin` remote is set to `https://github.com/amc-dats/semantic-interoperability`
-  — a new, empty repo (public, for GitHub Pages Free-plan hosting, same as
-  `data-lineage`) created for this app specifically. **Nothing has been
-  pushed to it yet** — that's the one step still waiting on your review.
+- `origin` remote is `https://github.com/amc-dats/semantic-interoperability`
+  (public, for GitHub Pages Free-plan hosting, same as `data-lineage`),
+  created for this app specifically, and the code is pushed there.
+  GitHub Pages itself isn't configured yet — see next steps.
 
 ## Next steps toward the real thing
 
-1. Review the local prototype; once approved, `git push -u origin master`
-   to publish this code to `amc-dats/semantic-interoperability`.
-2. Get the video exported and hosted, set `VITE_VIDEO_URL`.
-3. Stand up the real Azure Function endpoints against the provisioned
+1. Stand up the real Azure Function endpoints against the provisioned
    `Interoperability-results` app and `semanticinteroperability` storage
    account, matching the contract `server/index.js` already models.
-4. Add a `.github/workflows/deploy-pages.yml`, following the pattern in the
+2. Add a `.github/workflows/deploy-pages.yml`, following the pattern in the
    `data-lineage` repo, and set `vite.config.ts`'s `base` to
    `/semantic-interoperability/` (or a custom domain, if one gets set up)
    to match the Pages subpath. Set `VITE_API_BASE` to the deployed Function
-   App URL at build time.
-5. Add the Function App's CORS entry for the GitHub Pages origin once it
+   App URL at build time, and `VITE_VIDEO_URL` to the blob URL already in
+   `.env.local` (that file itself isn't committed, so the deploy build
+   needs the variable set some other way — a repo/CI variable, not a
+   secret, since the video is public).
+3. Add the Function App's CORS entry for the GitHub Pages origin once it
    exists.
