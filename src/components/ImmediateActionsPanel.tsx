@@ -70,6 +70,12 @@ export function ImmediateActionsPanel({ dimensions, answers, targets, roadmap }:
             gap to target is addressed first, regardless of how it scores relative
             to the others.
           </p>
+          {technicalActions.minimumReachedWithGaps && (
+            <p className="no-action-note" style={{ marginBottom: 10 }}>
+              Minimum Level 3 reached. Areas to prioritise in the short term are
+              those with the lowest scores.
+            </p>
+          )}
           <ActivityList activities={technicalActions.activities} />
         </div>
       )}
@@ -85,12 +91,22 @@ export function ImmediateActionsPanel({ dimensions, answers, targets, roadmap }:
                 Target already met at the current stage — no immediate action
                 needed for this dimension.
               </p>
-            ) : actions.activities.length === 0 ? (
-              <p className="no-action-note">
-                No specific roadmap activities are catalogued for this gap yet.
-              </p>
             ) : (
-              <ActivityList activities={actions.activities} />
+              <>
+                {actions.minimumReachedWithGaps && (
+                  <p className="no-action-note" style={{ marginBottom: 10 }}>
+                    Minimum Level 3 reached. Areas to prioritise in the short term
+                    are those with the lowest scores.
+                  </p>
+                )}
+                {actions.activities.length === 0 ? (
+                  <p className="no-action-note">
+                    No specific roadmap activities are catalogued for this gap yet.
+                  </p>
+                ) : (
+                  <ActivityList activities={actions.activities} />
+                )}
+              </>
             )}
           </div>
         );

@@ -1,0 +1,158 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.220
+Hello and welcome to the Semantic Interoperability Roadmap Introduction.
+
+2
+00:00:05.220 --> 00:00:09.180
+We want to talk about a challenge that touches many organisations.
+
+3
+00:00:09.180 --> 00:00:13.840
+This is part of an academic research study at Cranfield University.
+
+4
+00:00:13.840 --> 00:00:17.180
+This research is grounded in manufacturing and engineering.
+
+5
+00:00:17.180 --> 00:00:20.720
+However, similar challenges show up in other industries.
+
+6
+00:00:20.720 --> 00:00:26.320
+We want to test whether this framework transfers beyond the original context.
+
+7
+00:00:26.320 --> 00:00:31.680
+Most organisations run on a patchwork of discrete systems that don't share a common language.
+
+8
+00:00:31.680 --> 00:00:37.680
+When that happens, users become the glue, manually reconciling data across systems.
+
+9
+00:00:37.680 --> 00:00:41.460
+Systems that were never designed to share meaning.
+
+10
+00:00:41.460 --> 00:00:45.440
+As organisations grow, this patchwork tends to get worse.
+
+11
+00:00:45.440 --> 00:00:50.200
+Point-to-point integrations multiply, often custom-built and fragile.
+
+12
+00:00:50.200 --> 00:00:55.820
+Governance often lags behind and the most common consequence is a gap in time to value.
+
+13
+00:00:55.820 --> 00:01:01.300
+Organisations can have the technology in place for years before they see any return.
+
+14
+00:01:01.300 --> 00:01:06.580
+Our proposal is to introduce a semantic layer, a shared machine-readable model of what things
+
+15
+00:01:06.580 --> 00:01:08.560
+mean across these systems.
+
+16
+00:01:08.560 --> 00:01:14.140
+By building an ontology, we are translating all the dialects in one shared language, once,
+
+17
+00:01:14.140 --> 00:01:18.540
+rather than translating it fresh every single time.
+
+18
+00:01:18.540 --> 00:01:23.140
+So before we get into how, let's define what we are talking about.
+
+19
+00:01:23.140 --> 00:01:26.900
+Semantic interoperability is the ability of different information systems to share
+
+20
+00:01:26.900 --> 00:01:30.460
+data with clear and unmistakable meaning.
+
+21
+00:01:30.460 --> 00:01:32.740
+This is the goal.
+
+22
+00:01:32.740 --> 00:01:38.700
+An ontology is a shared machine-readable map of what things mean and how they relate.
+
+23
+00:01:38.700 --> 00:01:39.840
+Take this example.
+
+24
+00:01:39.840 --> 00:01:45.420
+With an ontology, each of these identifiers map to a single shared concept and defines
+
+25
+00:01:45.420 --> 00:01:50.460
+the relationships between the concepts, so a query means the same thing no matter which
+
+26
+00:01:50.500 --> 00:01:54.380
+system it came from.
+
+27
+00:01:54.380 --> 00:01:58.460
+Every organisation is somewhere on a journey towards this kind of maturity.
+
+28
+00:01:58.460 --> 00:02:04.720
+From ad hoc and person-dependent to practices being defined and documented, eventually interoperability
+
+29
+00:02:04.720 --> 00:02:07.280
+is built in by design.
+
+30
+00:02:07.280 --> 00:02:14.860
+Most organisations are somewhere on this scale, often without a clear sense of exactly where.
+
+31
+00:02:14.860 --> 00:02:17.260
+This is where we would like your input.
+
+32
+00:02:17.260 --> 00:02:21.460
+Based on your own experience, where is your organisation today and where you would like
+
+33
+00:02:21.460 --> 00:02:25.700
+it to be in the short and long term?
+
+34
+00:02:25.700 --> 00:02:30.740
+We have created a self-assessment with questions across five dimensions.
+
+35
+00:02:30.740 --> 00:02:35.140
+You will get your current score and some immediate actions towards your short-term goals.
+
+36
+00:02:35.140 --> 00:02:40.060
+At the end, there are some feedback questions to help validate our research.
+
+37
+00:02:40.060 --> 00:02:45.260
+If you found this useful and think others could benefit, please share it.
+
+38
+00:02:45.260 --> 00:02:51.100
+Your input and theirs will help validate whether this research translates across different industries.
+
+39
+00:02:51.100 --> 00:02:52.900
+Thank you very much for watching.
+

@@ -56,7 +56,15 @@ export function VideoScreen({ onContinue }: Props) {
             autoPlay
             muted
             playsInline
-          />
+          >
+            <track
+              kind="captions"
+              src={`${import.meta.env.BASE_URL}captions/intro.vtt`}
+              srcLang="en"
+              label="English"
+              default
+            />
+          </video>
         </div>
       ) : (
         <div className="video-wrap">

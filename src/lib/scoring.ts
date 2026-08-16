@@ -85,6 +85,14 @@ export interface SortedActivity extends RoadmapEntry {
 export interface ImmediateActions {
   dimensionId: DimensionId;
   noActionNeeded: boolean;
+  // True when the dimension's rounded average has reached Level 3 (so no
+  // further action is owed against its own target), but individual
+  // questions within it are still genuinely below 3 with real activities
+  // defined -- e.g. an average of 2.51 rounds up to 3 and masks a question
+  // still sitting at 2. When true, `activities` holds only the level-3-gap
+  // -closing work for those specific questions, not the dimension's normal
+  // target-driven action list.
+  minimumReachedWithGaps: boolean;
   currentStage: Level;
   targetLevel: Level;
   activities: SortedActivity[];
@@ -168,18 +176,50 @@ export function getImmediateActions(
 ): ImmediateActions {
   const avg = dimensionAverage(dimension, answers) ?? 1;
   const currentStage = roundedLevel(avg);
+  const dimRoadmap = roadmap.dimensions[dimension.id] ?? {};
 
   if (targetLevel <= currentStage) {
+    // The dimension's own target is already met by its rounded average --
+    // but rounding can mask individual questions still genuinely below the
+    // Level 3 baseline (2.51 rounds up to 3). Only worth checking once the
+    // dimension has actually reached that baseline; below it, "no action
+    // needed" already means the respondent simply hasn't asked to progress
+    // yet, which is a different, unremarkable case.
+    if (currentStage >= 3) {
+      const gapActivities: SortedActivity[] = [];
+      for (const q of dimension.questions) {
+        const qLevel = answers[q.id];
+        if (qLevel === undefined || qLevel >= 3) continue;
+        const entries = (dimRoadmap[String(q.number)] ?? []).filter(
+          (e) => e.fromLevel >= qLevel && e.fromLevel < 3,
+        );
+        for (const e of entries) {
+          gapActivities.push({ ...e, displayId: stripDimensionPrefix(e.activityId ?? "") });
+        }
+      }
+      if (gapActivities.length > 0) {
+        gapActivities.sort(compareActivities);
+        return {
+          dimensionId: dimension.id,
+          noActionNeeded: false,
+          minimumReachedWithGaps: true,
+          currentStage,
+          targetLevel,
+          activities: gapActivities,
+        };
+      }
+    }
+
     return {
       dimensionId: dimension.id,
       noActionNeeded: true,
+      minimumReachedWithGaps: false,
       currentStage,
       targetLevel,
       activities: [],
     };
   }
 
-  const dimRoadmap = roadmap.dimensions[dimension.id] ?? {};
   const activities: SortedActivity[] = [];
 
   for (const q of dimension.questions) {
@@ -200,6 +240,7 @@ export function getImmediateActions(
   return {
     dimensionId: dimension.id,
     noActionNeeded: false,
+    minimumReachedWithGaps: false,
     currentStage,
     targetLevel,
     activities,
