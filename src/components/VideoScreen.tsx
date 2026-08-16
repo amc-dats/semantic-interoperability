@@ -25,7 +25,15 @@ export function VideoScreen({ onContinue }: Props) {
       <h1>A short introduction</h1>
       {VIDEO_URL ? (
         <div className="video-wrap">
-          <video ref={setDefaultPlaybackRate} src={VIDEO_URL} controls preload="metadata" />
+          <video
+            ref={setDefaultPlaybackRate}
+            src={VIDEO_URL}
+            controls
+            preload="metadata"
+            autoPlay
+            muted
+            playsInline
+          />
         </div>
       ) : (
         <div className="video-wrap">
