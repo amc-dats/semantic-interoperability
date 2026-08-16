@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 interface Props {
   onContinue: () => void;
 }
@@ -8,17 +10,32 @@ const VIDEO_URL = import.meta.env.VITE_VIDEO_URL;
 
 const DEFAULT_PLAYBACK_RATE = 1.2;
 
-// Defaulting playback speed isn't a plain HTML attribute -- set both
-// properties on the element directly once it mounts (defaultPlaybackRate
-// for the rate a fresh play() starts at, playbackRate so it's already in
-// effect even before the respondent presses play).
-function setDefaultPlaybackRate(video: HTMLVideoElement | null) {
+type FullscreenCapableVideo = HTMLVideoElement & {
+  webkitRequestFullscreen?: () => void;
+  webkitEnterFullscreen?: () => void; // iOS Safari: only the <video> element itself supports this
+};
+
+// Browsers only allow requestFullscreen() (and unmuted autoplay) as a
+// direct response to a user gesture -- there's no way to default to
+// fullscreen without one. This is the practical equivalent: a single
+// click that unmutes, plays, and enters fullscreen together.
+function playFullscreenWithSound(video: HTMLVideoElement | null) {
   if (!video) return;
-  video.defaultPlaybackRate = DEFAULT_PLAYBACK_RATE;
-  video.playbackRate = DEFAULT_PLAYBACK_RATE;
+  video.muted = false;
+  void video.play();
+  const el = video as FullscreenCapableVideo;
+  if (video.requestFullscreen) {
+    void video.requestFullscreen();
+  } else if (el.webkitEnterFullscreen) {
+    el.webkitEnterFullscreen();
+  } else if (el.webkitRequestFullscreen) {
+    el.webkitRequestFullscreen();
+  }
 }
 
 export function VideoScreen({ onContinue }: Props) {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
   return (
     <div className="card">
       <div className="eyebrow">Introduction</div>
@@ -26,7 +43,13 @@ export function VideoScreen({ onContinue }: Props) {
       {VIDEO_URL ? (
         <div className="video-wrap">
           <video
-            ref={setDefaultPlaybackRate}
+            ref={(video) => {
+              videoRef.current = video;
+              if (video) {
+                video.defaultPlaybackRate = DEFAULT_PLAYBACK_RATE;
+                video.playbackRate = DEFAULT_PLAYBACK_RATE;
+              }
+            }}
             src={VIDEO_URL}
             controls
             preload="metadata"
@@ -46,6 +69,14 @@ export function VideoScreen({ onContinue }: Props) {
         </div>
       )}
       <div className="actions-row">
+        {VIDEO_URL && (
+          <button
+            className="btn btn-secondary"
+            onClick={() => playFullscreenWithSound(videoRef.current)}
+          >
+            Watch in fullscreen
+          </button>
+        )}
         <button className="btn btn-primary" onClick={onContinue}>
           {VIDEO_URL ? "Continue" : "Skip for now"}
         </button>
