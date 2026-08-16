@@ -24,7 +24,7 @@ const LEGEND_H = 40;
 const SERIES = [
   { key: "now", label: "Now", color: "#eb6834", shape: "circle", size: 3.5 },
   { key: "shortTerm", label: "Short-term target", color: "#2a78d6", shape: "square", size: 5 },
-  { key: "longTerm", label: "Long-term target", color: "#1baf7a", shape: "diamond", size: 7 },
+  { key: "longTerm", label: "Long-term target", color: "#1baf7a", shape: "diamond", size: 9 },
 ] as const;
 
 function xFor(level: number, plotW: number) {
