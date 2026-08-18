@@ -6,7 +6,7 @@ export function IntroScreen({ onContinue }: Props) {
   return (
     <div className="card">
       <div className="eyebrow">Interoperability Maturity Self-Assessment</div>
-      <h1>Welcome to the Semantic Interoperability Roadmap for Scalable Federated Data Access!</h1>
+      <h1>Welcome to the Semantic Interoperability Roadmap</h1>
       <div className="consent-text">
         <p>
           This self-assessment supports a research project at Cranfield University

@@ -201,3 +201,53 @@ this volume anyway — and an API key), and how to hand the two resulting
 values off for the final wiring (`SENDGRID_API_KEY` /
 `SENDGRID_FROM_EMAIL` as Function App settings). Not completed yet — this
 is the one functional gap remaining as of the end of this session.
+
+---
+
+## Day 3 — swapped SendGrid for SMTP2GO
+
+SendGrid's free tier turned out to be a time-limited trial, not a genuine
+free tier — discovered before the original setup was finished. Moved to
+SMTP2GO instead (free tier: 200 emails/day, 1,000/month, no expiry).
+
+- Account created, API key generated scoped to `Emails: /email/send`
+  only, sender address (`a.mellocosta.729@cranfield.ac.uk`) verified
+  under Single Sender Emails.
+- `send-results` rewritten to call SMTP2GO's HTTP API
+  (`POST https://api.smtp2go.com/v3/email/send`) directly with `fetch`
+  instead of the `@sendgrid/mail` SDK — one fewer dependency, and the
+  API key is sent via the `X-Smtp2go-Api-Key` header rather than in the
+  request body. Email content/generation logic unchanged, only the
+  transport call.
+- `@sendgrid/mail` removed from `package.json`/`package-lock.json`.
+
+**Sending as `cranfield.ac.uk` turned out to be a dead end.** Live-tested
+with `func start` + real requests to a real Cranfield inbox and a
+personal Hotmail inbox. Both showed `succeeded` from SMTP2GO's own API,
+but the Hotmail send hard-bounced (`550 5.7.515`,
+`Spf=Pass Dkim=Pass Dmarc=Fail`) — SMTP2GO's sending infrastructure
+passes SPF/DKIM for *its own* domain, but that doesn't align with the
+`5322.From` domain (`cranfield.ac.uk`), so DMARC alignment fails.
+Cranfield's own inbox showed "Delivered" in SMTP2GO's activity log, but
+that only confirms Cranfield's Proofpoint gateway accepted the SMTP
+transaction, not that it survived into the actual mailbox — likely
+caught in the same alignment problem one hop later. Root cause: Single
+Sender verification proves mailbox ownership but does nothing for
+DMARC/DKIM alignment, and `cranfield.ac.uk` (like most institutional
+domains) publishes a strict DMARC policy the user has no DNS access to
+change. This wasn't SMTP2GO-specific — the original SendGrid setup
+would have hit the identical wall.
+
+**Fixed by switching the sender to a personally-owned domain
+(`mellocosta.com`) with full Domain Authentication** instead of Single
+Sender verification — SMTP2GO issued three CNAME records (return-path,
+DKIM, link tracking), added via Bluehost (the domain's DNS host,
+identified from its nameservers rather than asking) using a connector
+that added them automatically. Once DNS propagated and SMTP2GO's own
+verification check ran, `results@mellocosta.com` sent cleanly — Hotmail
+delivered it (to spam, expected for a domain with no sending history
+yet) instead of bouncing it.
+- `SMTP2GO_API_KEY` / `SMTP2GO_FROM_EMAIL` (now `results@mellocosta.com`)
+  set as Function App Application Settings, replacing the old
+  `SENDGRID_API_KEY` / `SENDGRID_FROM_EMAIL` (removed once the swap was
+  confirmed working).

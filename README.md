@@ -46,10 +46,11 @@ completing the flow once.
   variable points at the actual `interoperability-results` Function App
   (`https://interoperability-results-d4cha8e5d8dufnaa.swedencentral-01.azurewebsites.net`
   — code in a separate repo, `https://github.com/amc-dats/interoperability-results`),
-  which really does save submissions to Azure Table Storage. **Except
-  email** — `send-results` is deployed and code-complete but returns `503`
-  until a SendGrid account exists and `SENDGRID_API_KEY`/`SENDGRID_FROM_EMAIL`
-  are set as Function App settings; see that repo's README. **Local dev
+  which really does save submissions to Azure Table Storage, and **now
+  sends real email** — `send-results` calls SMTP2GO's API (swapped from
+  SendGrid once its free tier became a time-limited trial), with
+  `SMTP2GO_API_KEY`/`SMTP2GO_FROM_EMAIL` set as Function App settings;
+  see that repo's README. **Local dev
   still uses the mock backend** (`server/index.js`) by default — same two
   endpoints, same contract, but a local JSON file instead of Table Storage
   and just logs what it would send instead of actually emailing — so local
@@ -259,10 +260,11 @@ generated files.
 3. ~~Add the Function App's CORS entry for the GitHub Pages origin~~ —
    done (`https://amc-dats.github.io`, plus `http://localhost:5173` for
    testing the real backend from local dev).
-4. **Sign up for SendGrid** (free tier), verify a sender address, and set
-   `SENDGRID_API_KEY` / `SENDGRID_FROM_EMAIL` as Function App settings —
-   the one remaining gap. `send-results` is deployed and code-complete,
-   just returns `503` until these exist.
+4. ~~Sign up for an email provider, verify a sender address, and set the
+   API key / from-address as Function App settings~~ — done. Started
+   with SendGrid; swapped to SMTP2GO (`SMTP2GO_API_KEY` /
+   `SMTP2GO_FROM_EMAIL`) once SendGrid's free tier became a
+   time-limited trial.
 5. Consider a CI/CD pipeline for the Function App (it's manual `az
    functionapp deploy` right now) — would need an Azure AD app
    registration with federated credentials or a publish-profile secret,
