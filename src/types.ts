@@ -135,4 +135,7 @@ export interface SubmissionPayload {
   scores: Record<DimensionId, number> & { overall: number };
   goals: Record<`${DimensionId}_shortTerm` | `${DimensionId}_longTerm`, Level>;
   validation: ValidationAnswers | null;
+  // Optional company code (see CompanyCodeScreen). Absent when completed alone.
+  orgCode?: string | null;
+  orgRound?: number | null;
 }

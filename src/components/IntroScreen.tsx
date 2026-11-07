@@ -9,8 +9,10 @@ export function IntroScreen({ onContinue }: Props) {
       <h1>Welcome to the Semantic Interoperability Roadmap</h1>
       <div className="consent-text">
         <p>
-          This self-assessment supports a research project at Cranfield University
-          investigating how organisations can improve their interoperability, the
+          This self-assessment is part of a research study undertaken for the MSc
+          in Digital and Technology Solutions in the Faculty of Engineering &amp;
+          Applied Sciences at Cranfield University. The study investigates how
+          organisations can improve their interoperability, the
           ability of systems like PLM, ERP, and MES to share data with shared
           meaning, not just shared connectivity.
         </p>
@@ -21,8 +23,9 @@ export function IntroScreen({ onContinue }: Props) {
           digital journey.
         </p>
         <p>
-          Your responses, combined with others', help validate whether this
-          framework holds up across different organisations and industries.
+          Your responses help validate the proposed roadmap: whether the stages
+          and priorities it recommends hold up across different organisations and
+          industries.
         </p>
         <p style={{ marginBottom: 0 }}>
           Participation is voluntary and anonymous: no personal or identifying

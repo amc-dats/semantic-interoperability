@@ -459,3 +459,88 @@ textarea {
   font-size: 2.5rem;
   margin-bottom: 8px;
 }
+
+/* ---- Print / save as PDF (results screen) ---- */
+.print-only {
+  display: none;
+}
+
+@media print {
+  .no-print,
+  .actions-row {
+    display: none !important;
+  }
+  .print-only {
+    display: block;
+    color: #52514e;
+    font-size: 12px;
+  }
+  body,
+  .page {
+    background: #fff !important;
+  }
+  .card {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* ---- Company codes ---- */
+.org-code-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  margin: 16px 0 8px;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--accent-bg);
+}
+
+.org-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.company-panel {
+  margin: 24px 0;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.company-panel h2 {
+  margin: 0 0 4px;
+  font-size: 18px;
+}
+
+.company-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+
+.company-table th,
+.company-table td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.company-table th:not(:first-child),
+.company-table td:not(:first-child) {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.company-total td {
+  font-weight: 600;
+}

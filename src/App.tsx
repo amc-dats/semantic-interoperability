@@ -15,15 +15,14 @@ import type {
 } from "./types";
 import { DIMENSION_ORDER, EMPTY_BUSINESS_CONTEXT, EMPTY_VALIDATION } from "./types";
 import { computeScores } from "./lib/scoring";
-import { submitAssessment, sendResultsEmail } from "./lib/api";
-import { renderImmediateActionsHtml, renderScoreSummaryHtml } from "./lib/emailSummary";
+import { submitAssessment, ORG_ENABLED } from "./lib/api";
 
 import { IntroScreen } from "./components/IntroScreen";
 import { VideoScreen } from "./components/VideoScreen";
+import { CompanyCodeScreen } from "./components/CompanyCodeScreen";
 import { BusinessContextScreen } from "./components/BusinessContextScreen";
 import { AssessmentFlow } from "./components/AssessmentFlow";
 import { ResultsScreen } from "./components/ResultsScreen";
-import { EmailOptInScreen } from "./components/EmailOptInScreen";
 import { ValidationScreen } from "./components/ValidationScreen";
 import { ThankYouScreen } from "./components/ThankYouScreen";
 
@@ -38,10 +37,10 @@ const dimensions = DIMENSION_ORDER.map(
 type Stage =
   | "intro"
   | "video"
+  | "company"
   | "businessContext"
   | "assessment"
   | "results"
-  | "email"
   | "validation"
   | "thankyou";
 
@@ -66,6 +65,11 @@ export default function App() {
   const [validation, setValidation] = useState<ValidationAnswers>(EMPTY_VALIDATION);
   const [wordingVariant, setWordingVariant] = useState<WordingVariant>("plainEnglish");
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [orgCode, setOrgCode] = useState<string | null>(null);
+  const [orgRound, setOrgRound] = useState<number | null>(null);
+  // True once the first submission attempt has finished, so the company
+  // average (which includes this respondent) is only fetched after it.
+  const [submitDone, setSubmitDone] = useState(false);
 
   const scores = useMemo(() => computeScores(dimensions, answers), [answers]);
 
@@ -100,6 +104,8 @@ export default function App() {
       scores: scoreRecord,
       goals,
       validation: includeValidation ? validation : null,
+      orgCode,
+      orgRound,
     };
   };
 
@@ -117,15 +123,9 @@ export default function App() {
       setSubmitError(
         "We couldn't save your results to the server just now, but you can still view them below.",
       );
+    } finally {
+      setSubmitDone(true);
     }
-  };
-
-  const handleSendEmail = async (email: string) => {
-    const resultsHtml =
-      renderScoreSummaryHtml(dimensions, scores, targets) +
-      renderImmediateActionsHtml(dimensions, answers, targets, roadmapData);
-    await sendResultsEmail(email, buildPayload(false), resultsHtml);
-    setStage("validation");
   };
 
   const handleValidationSubmit = async () => {
@@ -141,7 +141,21 @@ export default function App() {
     <div className="page">
       {stage === "intro" && <IntroScreen onContinue={handleConsent} />}
 
-      {stage === "video" && <VideoScreen onContinue={() => setStage("businessContext")} />}
+      {stage === "video" && (
+        <VideoScreen
+          onContinue={() => setStage(ORG_ENABLED ? "company" : "businessContext")}
+        />
+      )}
+
+      {stage === "company" && (
+        <CompanyCodeScreen
+          onDone={(code, round) => {
+            setOrgCode(code);
+            setOrgRound(round);
+            setStage("businessContext");
+          }}
+        />
+      )}
 
       {stage === "businessContext" && (
         <BusinessContextScreen
@@ -168,7 +182,7 @@ export default function App() {
       {stage === "results" && (
         <>
           {submitError && (
-            <div className="card" style={{ marginBottom: 16 }}>
+            <div className="card no-print" style={{ marginBottom: 16 }}>
               <p className="error-text" style={{ margin: 0 }}>
                 {submitError}
               </p>
@@ -180,16 +194,12 @@ export default function App() {
             targets={targets}
             scores={scores}
             roadmap={roadmapData}
-            onContinue={() => setStage("email")}
+            orgCode={orgCode}
+            orgRound={orgRound}
+            companyReady={submitDone}
+            onContinue={() => setStage("validation")}
           />
         </>
-      )}
-
-      {stage === "email" && (
-        <EmailOptInScreen
-          onSendAndContinue={handleSendEmail}
-          onContinueWithoutEmail={() => setStage("validation")}
-        />
       )}
 
       {stage === "validation" && (
