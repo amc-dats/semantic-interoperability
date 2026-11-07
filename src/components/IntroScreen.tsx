@@ -9,10 +9,10 @@ export function IntroScreen({ onContinue }: Props) {
       <h1>Welcome to the Semantic Interoperability Roadmap</h1>
       <div className="consent-text">
         <p>
-          This self-assessment is part of a research study undertaken for the MSc
-          in Digital and Technology Solutions in the Faculty of Engineering &amp;
-          Applied Sciences at Cranfield University. The study investigates how
-          organisations can improve their interoperability, the
+          This self-assessment is part of a research study undertaken in the
+          Faculty of Engineering &amp; Applied Sciences at Cranfield University.
+          The study investigates how organisations can improve their
+          interoperability, the
           ability of systems like PLM, ERP, and MES to share data with shared
           meaning, not just shared connectivity.
         </p>

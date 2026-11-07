@@ -54,7 +54,8 @@ export function ValidationScreen({ value, onChange, onSubmit, onSkip }: Props) {
       <h1>Help validate this research</h1>
       <p className="lede">
         If you have a few more minutes, these questions help validate this
-        research for my MSc dissertation at Cranfield University.
+        research and the proposed roadmap, as part of a research study in the
+        Faculty of Engineering &amp; Applied Sciences at Cranfield University.
       </p>
 
       <LikertQuestion
