@@ -1,9 +1,10 @@
 # Interoperability Maturity Self-Assessment — local prototype
 
 A single-page React app implementing the 5-dimension Interoperability Maturity
-Self-Assessment, per `../self_assessment_app_brief.md`. **This is the local
-prototype stage** — the frontend is complete and runnable end-to-end against a
-mock local backend; nothing has been deployed to Azure or GitHub Pages yet.
+Self-Assessment, per `../self_assessment_app_brief.md`. The frontend is live on
+GitHub Pages and saves responses to a PHP/MySQL backend on mellocosta.com (see
+"What's stubbed vs. real"). It can also run end-to-end locally against a mock
+backend.
 
 Built the same way as the `data-lineage` reference app: React 19 + TypeScript +
 Vite, static frontend, no client-side routing.
@@ -11,7 +12,8 @@ Vite, static frontend, no client-side routing.
 ## Running it
 
 Two processes: the Vite dev server (frontend) and a small Express server that
-stands in for the two Azure Functions described in the brief.
+stands in for the live backend's `save.php` (`/api/submit-assessment`). The mock
+has no company-code endpoint, so the company-code step is skipped locally.
 
 ```
 npm install
@@ -33,34 +35,43 @@ completing the flow once.
   `*_Maturity_Self_Assessment_PlainEnglish.xlsx` workbooks into
   `src/data/assessment-data.json` and `src/data/roadmap-data.json` (see
   "How the data was extracted" below). Nothing here is placeholder text.
-- **The video is live.** Exported and hosted on Azure Blob Storage in the
-  `semanticinteroperability` account, public blob read access. `VITE_VIDEO_URL`
-  is set in `.env.local` (git-ignored — not committed, since it's
-  environment config, not app code) to the blob URL; if it's ever unset,
-  the screen falls back to a "video coming soon" placeholder rather than
-  breaking. See `src/components/VideoScreen.tsx`. When the real Function
-  App URL gets set for deployment, `VITE_VIDEO_URL` will need setting again
-  wherever that build happens (CI secret/variable, not just this local
-  `.env.local`).
+- **The video is live.** Hosted on the mellocosta.com web server at
+  `https://mellocosta.com/interop/Interoperability_Intro_HD.mp4`. It was
+  previously on Azure Blob Storage, which is no longer used. `VITE_VIDEO_URL`
+  is set as a GitHub repo variable for the deployed build. For local dev it
+  can be put in `.env.local` (git-ignored, since it's environment config, not
+  app code); if it's ever unset, the screen falls back to a "video coming
+  soon" placeholder rather than breaking. See `src/components/VideoScreen.tsx`.
 - **The real backend is live.** The deployed site's `VITE_API_BASE` repo
-  variable points at the actual `interoperability-results` Function App
-  (`https://interoperability-results-d4cha8e5d8dufnaa.swedencentral-01.azurewebsites.net`
-  — code in a separate repo, `https://github.com/amc-dats/interoperability-results`),
-  which really does save submissions to Azure Table Storage, and **now
-  sends real email** — `send-results` calls SMTP2GO's API (swapped from
-  SendGrid once its free tier became a time-limited trial), with
-  `SMTP2GO_API_KEY`/`SMTP2GO_FROM_EMAIL` set as Function App settings;
-  see that repo's README. **Local dev
-  still uses the mock backend** (`server/index.js`) by default — same two
-  endpoints, same contract, but a local JSON file instead of Table Storage
-  and just logs what it would send instead of actually emailing — so local
-  iteration can't accidentally write real data or send real email. Set
+  variable is `https://mellocosta.com/interop`. The backend is PHP on
+  Bluehost with a MySQL database, replacing the earlier Azure Function app:
+  - `save.php` validates and stores each response (one row per `responseId`,
+    upserted, so the later validation submission overwrites the first).
+  - `org.php` handles company codes (create, join, start a new round, and
+    per-round average scores; individual rows are never returned).
+  - `lib.php` holds the shared helpers, including the CORS allow-list
+    (`https://amc-dats.github.io` and `http://localhost:5173`).
+  The backend source is not in this repo. Its deployment notes are in
+  `php-backend/DEPLOY.md` in the project folder.
+- **No results email.** The earlier email-me-my-results step was removed.
+  The results screen has a "Print or save as PDF" button instead (print
+  styles in `src/App.css`). `EmailOptInScreen.tsx`, `src/lib/emailSummary.ts`
+  and the mock `/api/send-results` endpoint remain in the code but are
+  unused.
+- **Company codes (optional step after the video).** A respondent can create
+  a code (a short name plus a random 4-character suffix, e.g. `ACME-4K7Q`),
+  join with an existing one, or skip. Colleagues using the same code see the
+  company average on their results screen, and a code can start a new round
+  to compare follow-up assessments. See `CompanyCodeScreen.tsx` and
+  `CompanyAveragePanel.tsx`. The step is hidden when `VITE_API_BASE` is unset
+  (local dev), because the mock server has no equivalent.
+- **Local dev uses the mock backend** (`server/index.js`) by default, writing
+  to a local JSON file, so local iteration can't write real data. Set
   `VITE_API_BASE` in `.env.local` if you want local dev to hit the real
   backend instead (CORS already allows `http://localhost:5173`).
 - **Live on GitHub Pages** at `https://amc-dats.github.io/semantic-interoperability/`
   (repo: `https://github.com/amc-dats/semantic-interoperability`, deploy
-  workflow copied from `data-lineage` — see "Git / repo state" below), now
-  wired to the real backend above.
+  workflow copied from `data-lineage` — see "Git / repo state" below).
 
 ## Second pass — what changed
 
@@ -138,7 +149,7 @@ This round:
   captured.
 - **Submission timing.** The full record (business context + assessment +
   scores + goals) is POSTed once, right when the Results screen loads —
-  not blocked on the optional email/validation steps, per the brief's "must
+  not blocked on the optional validation step, per the brief's "must
   not block submission of the assessment already captured." If the
   validation questionnaire is completed afterwards, a second POST to the
   same endpoint with the same `responseId` upserts the validation fields
@@ -207,11 +218,11 @@ src/
     businessContextOptions.ts         # dropdown option lists (business_context_section.md)
   lib/
     scoring.ts                        # dimension averages, stage bands, cap logic, immediate-actions logic
-    api.ts                            # fetch wrappers for the two backend endpoints
+    api.ts                            # fetch wrappers for save.php and org.php
   components/                         # one component per screen in the flow
   types.ts                            # shared domain types + the flat submission payload shape
 server/
-  index.js                            # local mock of the two Azure Function endpoints
+  index.js                            # local mock of the submit endpoint (no company codes)
 ```
 
 ## How the data was extracted
@@ -242,30 +253,18 @@ generated files.
   `http://localhost:5173/semantic-interoperability/` (not just the
   production build) — `data-lineage` does the same, `base` isn't
   conditioned on dev vs. build.
-- Once this first workflow run completes, the live site will be at
-  `https://amc-dats.github.io/semantic-interoperability/` — same pattern as
-  `https://amc-dats.github.io/data-lineage/`. **The backend calls
-  (submit-assessment, send-results) will fail there** until the real Azure
-  Function is stood up and `VITE_API_BASE` is set at build time (see next
-  steps) — the frontend itself will work and results still render locally
-  in the browser even if the save silently fails, but nothing is actually
-  persisted yet from that live URL.
+- The live site is at `https://amc-dats.github.io/semantic-interoperability/`
+  — same pattern as `https://amc-dats.github.io/data-lineage/`. It needs the
+  `VITE_API_BASE` and `VITE_VIDEO_URL` repo variables (Settings > Secrets and
+  variables > Actions > Variables) set **before** a build; variables changed
+  after a deploy only take effect once the "Deploy to GitHub Pages" workflow
+  is re-run.
 
-## Next steps toward the real thing
+## Backend history
 
-1. ~~Stand up the real Azure Function endpoints~~ — done, see
-   `amc-dats/interoperability-results`.
-2. ~~Set `VITE_API_BASE` and `VITE_VIDEO_URL` as repo/CI build
-   variables~~ — done.
-3. ~~Add the Function App's CORS entry for the GitHub Pages origin~~ —
-   done (`https://amc-dats.github.io`, plus `http://localhost:5173` for
-   testing the real backend from local dev).
-4. ~~Sign up for an email provider, verify a sender address, and set the
-   API key / from-address as Function App settings~~ — done. Started
-   with SendGrid; swapped to SMTP2GO (`SMTP2GO_API_KEY` /
-   `SMTP2GO_FROM_EMAIL`) once SendGrid's free tier became a
-   time-limited trial.
-5. Consider a CI/CD pipeline for the Function App (it's manual `az
-   functionapp deploy` right now) — would need an Azure AD app
-   registration with federated credentials or a publish-profile secret,
-   which is a real addition to the tenant worth agreeing on first.
+The first version of this project used an Azure Function app (separate repo,
+`amc-dats/interoperability-results`) with Azure Table Storage, Azure Blob
+Storage for the video, and SendGrid and then SMTP2GO for a results email. That
+was replaced in November 2026 by the PHP/MySQL backend on mellocosta.com
+described above. The narrative of how the project got here is in
+`ITERATIONS.md`.
